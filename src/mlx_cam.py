@@ -35,7 +35,24 @@ def printDataWithSTM32(data):
     except:
                 print("An exception occurred. Sending Data didnt work")
 
-
+def printDirection(index_max):
+    #the map is morrowed --> on the right hand site means the object is on the left hand side
+    aiming=""
+    
+    for x in range(index_max-1):
+        if x%8 ==0:
+            aiming=aiming+"\n"
+        aiming=aiming+"0"
+    aiming=aiming+"X"
+    first=True
+    for x in range(index_max,64):
+        if x%8 ==0:
+            aiming=aiming+"\n"
+        aiming=aiming+"0"
+        first=False
+    print(aiming)
+    return
+           
 class MLX_Cam:
     """!
     @brief   Class which wraps an MLX90640 thermal infrared camera driver to
@@ -73,6 +90,50 @@ class MLX_Cam:
         ## A local reference to the image object within the camera driver
         self._image = self._camera.image
 
+    def ascii_image(self, array, pixel="██", textcolor="0;180;0"):
+        """!
+        @brief   Show low-resolution camera data as shaded pixels on a text
+                 screen.
+        @details The data is printed as a set of characters in columns for the
+                 number of rows in the camera's image size. This function is
+                 intended for testing an MLX90640 thermal infrared sensor.
+
+                 A pair of extended ACSII filled rectangles is used by default
+                 to show each pixel so that the aspect ratio of the display on
+                 screens isn't too smushed. Each pixel is colored using ANSI
+                 terminal escape codes which work in only some programs such as
+                 PuTTY.  If shown in simpler terminal programs such as the one
+                 used in Thonny, the display just shows a bunch of pixel
+                 symbols with no difference in shading (boring).
+
+                 A simple auto-brightness scaling is done, setting the lowest
+                 brightness of a filled block to 0 and the highest to 255. If
+                 there are bad pixels, this can reduce contrast in the rest of
+                 the image.
+
+                 After the printing is done, character color is reset to a
+                 default of medium-brightness green, or something else if
+                 chosen.
+        @param   array An array of (self._width * self._height) pixel values
+        @param   pixel Text which is shown for each pixel, default being a pair
+                 of extended-ASCII blocks (code 219)
+        @param   textcolor The color to which printed text is reset when the
+                 image has been finished, as a string "<r>;<g>;<b>" with each
+                 letter representing the intensity of red, green, and blue from
+                 0 to 255
+        """
+        minny = min(array)
+        scale = 255.0 / (max(array) - minny)
+        for row in range(self._height):
+            for col in range(self._width):
+                pix = int((array[row * self._width + (self._width - col - 1)]
+                           - minny) * scale)
+                print(f"\033[38;2;{pix};{pix};{pix}m{pixel}", end='')
+            print(f"\033[38;2;{textcolor}m")
+
+
+    ## A "standard" set of characters of different densities to make ASCII art
+    asc = " -.:=+*#%@"
 
     def get_2DArray(self, array, limits=None):
         """!
@@ -175,17 +236,22 @@ if __name__ == "__main__":
             # CPython can read CSV and make a decent false-color heat plot.
 
             array=camera.get_2DArray(image.v_ir, limits=(0, 99))
-            valArray=[0]*8
-            for arrNr in range(8):              
+            valArray=[0]*64
+            for arrNr in range(64):              
                 for row in range(3):
                     for col in range (4):
-                        valArray[arrNr]=valArray[arrNr]+array[row][col+(4*arrNr)]
+                        valArray[arrNr]=valArray[arrNr]+array[row+((int(arrNr/8))*3)][col+(4*(arrNr%8))]
             index_max = valArray.index(max(valArray))
             #print(array)
             print ("thats the highest index! " )
             print(index_max)
             print (valArray)
-
+            printDirection(index_max)
+          
+                
+            show_image=True
+            if show_image:
+                 camera.ascii_image(image.buf)
  
             time.sleep_ms(1000)
 
