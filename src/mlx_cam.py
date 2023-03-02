@@ -29,12 +29,12 @@ from mlx90640.image import ChessPattern, InterleavedPattern
 
 def getvalArr (inputArr):
     """!
-        @brief   Generate a Array with Values of the average 3x4 Pixel block
-        @details This function generates a 2D-Array, with all the data with the right offset and scale. There are 64 different values with the values
-        of the whole Pixel block to get the position
-        @param   array The array of data to be added
-        @return value Array with size 64 with the sum of the Pixel Block 
-        """
+    @brief   Generate a Array with Values of the average 3x4 Pixel block
+    @details This function generates a 2D-Array, with all the data with the right offset and scale. There are 64 different values with the values
+    of the whole Pixel block to get the position
+    @param   array The array of data to be added
+    @return value Array with size 64 with the sum of the Pixel Block 
+    """
     valArray=[0]*64
     for arrNr in range(64):              
         for row in range(3):
@@ -55,11 +55,11 @@ def getvalArr (inputArr):
 #         
 def getPositionIndex(image):
     """!
-        @brief   calculates the index to get the right position for our 64 different options
-        @details This function calculates with a fixed offset the position we want to go
-        @param   camera image
-        @return position we want to aim 
-        """
+    @brief   calculates the index to get the right position for our 64 different options
+    @details This function calculates with a fixed offset the position we want to go
+    @param   camera image
+    @return position we want to aim 
+    """
     #average of the deviation per pixle block
     deviArr=[141,133,126,113,105,102,99,127,210,213,211,187,115,116,109,132,166,175,162,186,154,160,182,201,117,119,149,194,96,85,90,154,172,192,202,250,109,62,71,127,145,115,122,86,171,125,194,139,190,159,175,138,155,135,132,168,288,250,243,207,222,195,190,212]
     array=camera.get_2DArray(image.v_ir, limits=(0, 99))
@@ -73,12 +73,12 @@ def getPositionIndex(image):
 
 
 def printDataWithSTM32(data):
-      """!
-        @brief   sends sata over the stm32 serial port
-        @details sends sata over the stm32 serial port and not over te serial port of the shoe
-        @param   string you want to send
-         
-        """
+    """!
+    @brief   sends sata over the stm32 serial port
+    @details sends sata over the stm32 serial port and not over te serial port of the shoe
+    @param   string you want to send
+     
+    """
     try: 
                 u2 = pyb.UART(2, baudrate=115200)      # Set up the second USB-serial port
 
@@ -89,12 +89,12 @@ def printDataWithSTM32(data):
                 print("An exception occurred. Sending Data didnt work")
 
 def printDirection(index_max):
-     """!
-        @brief   prints a map with the position the object stands
-        @details prints out a map with the position. X is the location and 0s are the other options we could aim to
-        @param   position index
-         
-        """
+    """!
+    @brief   prints a map with the position the object stands
+    @details prints out a map with the position. X is the location and 0s are the other options we could aim to
+    @param   position index
+     
+    """
     #the map is morrowed --> on the right hand site means the object is on the left hand side
     aiming=""
     
@@ -103,12 +103,10 @@ def printDirection(index_max):
             aiming=aiming+"\n"
         aiming=aiming+"0"
     aiming=aiming+"X"
-    first=True
     for x in range(index_max,64):
-        if x%8 ==0:
+        if x%8 ==0 and x>0:
             aiming=aiming+"\n"
         aiming=aiming+"0"
-        first=False
     print(aiming)
     return
            
