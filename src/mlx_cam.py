@@ -61,7 +61,7 @@ def getPositionIndex(image):
     @return position we want to aim 
     """
     #average of the deviation per pixle block
-    deviArr=[141,133,126,113,105,102,99,127,210,213,211,187,115,116,109,132,166,175,162,186,154,160,182,201,117,119,149,194,96,85,90,154,172,192,202,250,109,62,71,127,145,115,122,86,171,125,194,139,190,159,175,138,155,135,132,168,288,250,243,207,222,195,190,212]
+    deviArr=[151,155,139,125,127,128,140,157,142,132,124,128,127,128,140,125,133,124,122,117,118,101,142,129,133,133,114,121,132,116,116,122,137,123,123,118,102,106,102,114,133,126,115,120,128,8,12,10,125,136,105,109,113,113,115,104,115,114,118,112,110,114,110,113]
     array=camera.get_2DArray(image.v_ir, limits=(0, 99))
     valArray=getvalArr(array)
     index=0
@@ -217,7 +217,7 @@ class MLX_Cam:
                           * scale) + offset)
                 if row==15:
                     if col==30 or col==29 or col==27 or col==25 or col==22 or col==23:
-                        pix=47 #this is a hardware specific fix, because there are dead pixles
+                        pix=pix #this is a hardware specific fix, because there are dead pixles
                 dataArray[rowix][colix]=pix
 
                 colix=colix+1
