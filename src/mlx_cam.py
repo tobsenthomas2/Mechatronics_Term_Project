@@ -25,7 +25,60 @@ from mlx90640 import MLX90640
 from mlx90640.calibration import NUM_ROWS, NUM_COLS, IMAGE_SIZE, TEMP_K
 from mlx90640.image import ChessPattern, InterleavedPattern
 
+
+
+def getvalArr (inputArr):
+    """!
+        @brief   Generate a Array with Values of the average 3x4 Pixel block
+        @details This function generates a 2D-Array, with all the data with the right offset and scale. There are 64 different values with the values
+        of the whole Pixel block to get the position
+        @param   array The array of data to be added
+        @return value Array with size 64 with the sum of the Pixel Block 
+        """
+    valArray=[0]*64
+    for arrNr in range(64):              
+        for row in range(3):
+            for col in range (4):
+                valArray[arrNr]=valArray[arrNr]+inputArr[row+((int(arrNr/8))*3)][col+(4*(arrNr%8))]
+                            
+    return valArray
+
+# def initArrVal(initValues):
+#     initAver=456
+#     deviArr=initValues
+#     index=0
+#     for val in initValues:
+#         deviArr[index]=val-440
+#         index=index+1
+#     return deviArr
+#         
+#         
+def getPositionIndex(image):
+    """!
+        @brief   calculates the index to get the right position for our 64 different options
+        @details This function calculates with a fixed offset the position we want to go
+        @param   camera image
+        @return position we want to aim 
+        """
+    #average of the deviation per pixle block
+    deviArr=[141,133,126,113,105,102,99,127,210,213,211,187,115,116,109,132,166,175,162,186,154,160,182,201,117,119,149,194,96,85,90,154,172,192,202,250,109,62,71,127,145,115,122,86,171,125,194,139,190,159,175,138,155,135,132,168,288,250,243,207,222,195,190,212]
+    array=camera.get_2DArray(image.v_ir, limits=(0, 99))
+    valArray=getvalArr(array)
+    index=0
+    for val in valArray:
+        valArray[index]=val-deviArr[index]
+        index=index+1
+    print (valArray)
+    return valArray.index(max(valArray))
+
+
 def printDataWithSTM32(data):
+      """!
+        @brief   sends sata over the stm32 serial port
+        @details sends sata over the stm32 serial port and not over te serial port of the shoe
+        @param   string you want to send
+         
+        """
     try: 
                 u2 = pyb.UART(2, baudrate=115200)      # Set up the second USB-serial port
 
@@ -36,6 +89,12 @@ def printDataWithSTM32(data):
                 print("An exception occurred. Sending Data didnt work")
 
 def printDirection(index_max):
+     """!
+        @brief   prints a map with the position the object stands
+        @details prints out a map with the position. X is the location and 0s are the other options we could aim to
+        @param   position index
+         
+        """
     #the map is morrowed --> on the right hand site means the object is on the left hand side
     aiming=""
     
@@ -189,7 +248,6 @@ class MLX_Cam:
 
         return image
 
-
 ## @cond NO_DOXY don't document the test code in the driver documentation
 if __name__ == "__main__":
 
@@ -212,7 +270,7 @@ if __name__ == "__main__":
     # Select MLX90640 camera I2C address, normally 0x33, and check the bus
     i2c_address = 0x33
     scanhex = [f"0x{addr:X}" for addr in i2c_bus.scan()]
-    print(f"I2C Scan: {scanhex}")
+    #print(f"I2C Scan: {scanhex}")
 
     # Create the camera object and set it up in default mode
     camera = MLX_Cam(i2c_bus)
@@ -222,6 +280,11 @@ if __name__ == "__main__":
     #enemy can move for 5 s then freeze for 10s
     #we should do the calc every second and if nobody is moving it should be in the same pixle array and we can start shooting as often as we can
     #should we do fixed positions? would be the easiest and less calculation.
+    
+    #code to init the val array:
+    #image = camera.get_image()
+    #array=getvalArr(camera.get_2DArray(image.v_ir, limits=(0, 99)))
+    #deviArr=initArrVal(array)
     while True:
         try:
             # Get and image and see how long it takes to grab that image
@@ -235,17 +298,12 @@ if __name__ == "__main__":
             # could also be written to a file. Spreadsheets, Matlab(tm), or
             # CPython can read CSV and make a decent false-color heat plot.
 
-            array=camera.get_2DArray(image.v_ir, limits=(0, 99))
-            valArray=[0]*64
-            for arrNr in range(64):              
-                for row in range(3):
-                    for col in range (4):
-                        valArray[arrNr]=valArray[arrNr]+array[row+((int(arrNr/8))*3)][col+(4*(arrNr%8))]
-            index_max = valArray.index(max(valArray))
+            
+            index_max = getPositionIndex(image)
             #print(array)
             print ("thats the highest index! " )
             print(index_max)
-            print (valArray)
+            #print (valArray)
             printDirection(index_max)
           
                 
