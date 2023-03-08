@@ -46,6 +46,7 @@ from  motor_driver import MotorDriver
 
 import motor1
 import motor2
+import controlServo
 
 
 
@@ -58,7 +59,9 @@ if __name__ == "__main__":
           "Press Ctrl-C to stop and show diagnostics.")
 
     # Create a share and a queue to test function and diagnostic printouts
-    share0 = task_share.Share('h', thread_protect=False, name="Share 0")
+    motor1Ready = task_share.Share('h', thread_protect=False, name="motor1Ready")
+    motor2Ready = task_share.Share('h', thread_protect=False, name="motor2Ready")
+    aimingReady = task_share.Share('h', thread_protect=False, name="aimingReady")
     q0 = task_share.Queue('L', 16, thread_protect=False, overwrite=False,
                           name="Queue 0")
 
@@ -66,12 +69,18 @@ if __name__ == "__main__":
     # allocated for state transition tracing, and the application will run out
     # of memory after a while and quit. Therefore, use tracing only for 
     # debugging and set trace to False when it's not needed
+    #task10 = cotask.Task(AIMINGFN, name="Aiming", priority=1, period=60,
+    #                    profile=True, trace=False, shares=(aimingReady, q0))
     task1 = cotask.Task(motor1.Motor1, name="Motor_1", priority=1, period=60,
-                        profile=True, trace=False, shares=(share0, q0))
+                        profile=True, trace=False, shares=(motor1Ready,aimingReady, q0))
     task2 = cotask.Task(motor2.Motor2, name="Motor_2", priority=2, period=60,
-                        profile=True, trace=False, shares=(share0, q0))
+                        profile=True, trace=False, shares=(motor2Ready,aimingReady, q0))
+    task3 = cotask.Task(motor2.Motor2, name="Motor_Servo", priority=2, period=60,
+                        profile=True, trace=False, shares=(motor1Ready,motor2Ready, q0))
+    
     cotask.task_list.append(task1)
     cotask.task_list.append(task2)
+    cotask.task_list.append(task3)
 
     # Run the memory garbage collector to ensure memory is as defragmented as
     # possible before the real-time scheduler is started
