@@ -13,7 +13,7 @@ positional inputs. This will run for 400ms. State 2 turns off the motor and begi
 is used when data is done being transmitted. 
 """
 def Motor1(reset):
-    updatemotor,ready,theta1 = shares
+    updatemotor,ready,fired,theta1 = shares
     state = 0
     #reset=True
     while True:
@@ -27,7 +27,6 @@ def Motor1(reset):
             pwm1.set_setpoint(Theta_Set)
             pwm1.set_KP(KP)
             state = 1 
-            yield state
             
         elif state == 1:
             motflg = updatemotor.get()
@@ -42,16 +41,11 @@ def Motor1(reset):
                 state = 2
                 readyflg = ready.get()
                 ready.put(readyflg | 0b01)
-            yield state
-            
+                Motor1.set_duty_cycle(0)
+                
         elif state == 2:
-            Motor1.set_duty_cycle(0)
-            
-            state = 3
-            
-            yield state
-            
-        elif state == 3:
-            if reset == True:
-                state = 0
-            yield state
+            if fired.get()==True
+                state = 1
+                
+        yield state
+
