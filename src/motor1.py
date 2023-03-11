@@ -23,7 +23,7 @@ def Motor1(reset):
             time_step = 0.01
            # Theta_Set = 100000
 
-            #this is the 
+            #this is the yaw?
             Theta_Set = MasterMind.getpos(yaw)
             KP = 0.01
             pwm1 = PWM_Calc()
@@ -33,7 +33,8 @@ def Motor1(reset):
             start = time.time_ns() // 1_000_000 #time in ms
             
             yield state
-            
+        
+           
         elif state == 1:
             Theta_Act = encoder1.read()
             PWM = pwm1.Run(Theta_Act)

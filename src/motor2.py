@@ -22,7 +22,9 @@ def Motor2(reset):
             encoder2=EncoderClass(pyb.Pin.board.PC6,pyb.Pin.board.PC7,8)
             encoder2.zero()
             time_step = 0.01
-            Theta_Set = 100000
+            #Theta_Set = 100000
+            #pitch position
+            Theta_Set = MasterMind.getpos(pitch)
             KP = 0.025
             pwm2 = PWM_Calc()
             pwm2.set_setpoint(Theta_Set)

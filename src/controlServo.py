@@ -4,6 +4,14 @@ from  motor_driver import MotorDriver
 import pyb, time
 # Set up PWM output pin
 
+"""!
+@file controlServo.py
+    This file actuates the functionality of the servo motor. The servo motor is specifically being set to fire the gun by using a string in tension.
+
+@author Toby Darci, Tobias Thomas, Sydney Gothenquist
+@date   2023-Mar-11 
+    """
+
 # Set up servo parameters
 servo_frequency = 50  # Servo PWM frequency (Hz)
 servo_duty_min = 2    # Duty cycle for 0 degrees
