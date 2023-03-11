@@ -13,6 +13,7 @@ positional inputs. This will run for 400ms. State 2 turns off the motor and begi
 is used when data is done being transmitted. 
 """
 def Motor1(reset):
+    updatemotor,ready,fired,theta1 = shares
     state = 0
     #reset=True
     while True:
@@ -25,6 +26,7 @@ def Motor1(reset):
 
             #this is the yaw?
             Theta_Set = MasterMind.getpos(yaw)
+            Theta_Set = 0
             KP = 0.01
             pwm1 = PWM_Calc()
             pwm1.set_setpoint(Theta_Set)
@@ -35,24 +37,26 @@ def Motor1(reset):
             yield state
         
            
+            state = 1 
+            
         elif state == 1:
+            motflg = updatemotor.get()
+            if motflg & 0b01==True:
+                Theta_Set = theta1.get()
+                pwm1.set_setpoint(Theta_Set)
+                updatemotor.put(motflg&0b10)
             Theta_Act = encoder1.read()
             PWM = pwm1.Run(Theta_Act)
             Motor1.set_duty_cycle(PWM)
-            stop = time.time_ns() // 1_000_000
-            duration=(stop-start)
-            if (int(duration)) >= 4000:#time in ms
+            if abs(Theta_Set-Theta_Act)<10
                 state = 2
-            yield state
-            
+                readyflg = ready.get()
+                ready.put(readyflg | 0b01)
+                Motor1.set_duty_cycle(0)
+                
         elif state == 2:
-            Motor1.set_duty_cycle(0)
-            pwm1.Print_Data(False)
-            state = 3
-            
-            yield state
-            
-        elif state == 3:
-            if reset == True:
-                state = 0
-            yield state
+            if fired.get()==True
+                state = 1
+                
+        yield state
+
