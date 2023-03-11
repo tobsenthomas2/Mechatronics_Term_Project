@@ -3,6 +3,7 @@ from PWM_Calc import PWM_Calc
 import pyb, time
 from encoder_reader import EncoderClass
 from  motor_driver import MotorDriver
+import MasterMind.py
 
 """!The function initializes and runs the motor 1
 @param[in] reset - boolean value indicating if the motor should be reset or not
@@ -20,7 +21,10 @@ def Motor1(reset):
             encoder1=EncoderClass(pyb.Pin.board.PB6,pyb.Pin.board.PB7,4)
             encoder1.zero()
             time_step = 0.01
-            Theta_Set = 100000
+           # Theta_Set = 100000
+
+            #this is the 
+            Theta_Set = MasterMind.getpos(yaw)
             KP = 0.01
             pwm1 = PWM_Calc()
             pwm1.set_setpoint(Theta_Set)

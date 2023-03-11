@@ -3,6 +3,7 @@
 import mlx_cam.py
 import motor2.py
 import motor1.py
+import controlServo.Py
 
 #these are the angles/ticks we need to move per each value of the 8x8 matrix
 angle_yaw = 1
@@ -30,7 +31,8 @@ def update_motors():
     motor2.Motor2()
 
 def fire():
-    motor_servo.fire()
+    controlServo.pullTheTrigger()
+
 
 #wait for inputs
 if state == 1:
@@ -40,6 +42,7 @@ if state == 1:
 elif state == 2:
     getpos()
     assignposvalue()
+    #PWM_Calc.set_setpoint()
     update_motors()
 
 #fire gun

@@ -1,4 +1,3 @@
-
 #for the z axis, rotate up/down until the camera "X" matches with the position of the motor
 
 #motor positioner
