@@ -4,6 +4,13 @@ from PWM_Calc import PWM_Calc
 import pyb, time
 from encoder_reader import EncoderClass
 from  motor_driver import MotorDriver
+"""!
+@file motor2.py
+    This file contains all of the set up for the second motor that controls the pitch of the launcher.
+
+@author Toby Darci, Tobias Thomas, Sydney Gothenquist
+@date   2023-Mar-11 
+    """
 
 
 """!The function initializes and runs the motor 1

@@ -4,6 +4,13 @@ import pyb, time
 from encoder_reader import EncoderClass
 from  motor_driver import MotorDriver
 import math
+"""!
+@file motor1.py
+    This file contains all of the set up for the first motor that controls the yaw of the launcher. 
+
+@author Toby Darci, Tobias Thomas, Sydney Gothenquist
+@date   2023-Mar-11 
+    """
 
 encticperrad = 16000/(2*math.pi)
 """!The function initializes and runs the motor 1
