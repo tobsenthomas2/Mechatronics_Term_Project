@@ -5,6 +5,14 @@ import serial
 import time
 from matplotlib import pyplot
 
+"""!
+@file readAndPlotOnPC.py
+This file contains functions which allows for the plotting of data that we read on our PC
+
+@author Toby Darci, Tobias Thomas, Sydney Gothenquist
+@date   2023-Mar-11 
+"""
+
 #cant start program from "usaual" python terminal --> use thonny python and use the following command
 #& 'C:\Program Files (x86)\Thonny\python.exe' .\readAndPlotOnPC.py
 
@@ -12,7 +20,6 @@ from matplotlib import pyplot
  * @brief Plots data received from the serial port.
  * @param[in] input the data to be plotted.
 """
-
 def plot_data(inputData):
     x = []
     y = []
