@@ -38,15 +38,12 @@ import gc
 import pyb
 import cotask
 import task_share
-
-from PWM_Calc import PWM_Calc
 import pyb, time
-from encoder_reader import EncoderClass
-from  motor_driver import MotorDriver
-
 import motor1
 import motor2
-import controlServo
+import trigger
+import Camera
+import MasterMind
 
 
 
@@ -59,28 +56,37 @@ if __name__ == "__main__":
           "Press Ctrl-C to stop and show diagnostics.")
 
     # Create a share and a queue to test function and diagnostic printouts
-    motor1Ready = task_share.Share('h', thread_protect=False, name="motor1Ready")
-    motor2Ready = task_share.Share('h', thread_protect=False, name="motor2Ready")
-    aimingReady = task_share.Share('h', thread_protect=False, name="aimingReady")
-    q0 = task_share.Queue('L', 16, thread_protect=False, overwrite=False,
-                          name="Queue 0")
+    updatemotor = task_share.Share('B', thread_protect=False, name="Update_Motor")
+    ready = task_share.Share('B', thread_protect=False, name="Ready")
+    fired = task_share.Share('B', thread_protect=False, name="Fired")
+    fire = task_share.Share('B', thread_protect=False, name="Fire")
+    theta1 = task_share.Share('f', thread_protect=False, name="thetayaw")
+    theta2 = task_share.Share('f', thread_protect=False, name="thetapitch")
+    cameraon = task_share.Share('B', thread_protect=False, name="Cameraon")
+    updateang = task_share.Share('B', thread_protect=False, name="updateang")
+    position = task_share.Share('B', thread_protect=False, name="Position")
 
     # Create the tasks. If trace is enabled for any task, memory will be
     # allocated for state transition tracing, and the application will run out
     # of memory after a while and quit. Therefore, use tracing only for 
     # debugging and set trace to False when it's not needed
-    #task10 = cotask.Task(AIMINGFN, name="Aiming", priority=1, period=60,
+    # task10 = cotask.Task(AIMINGFN, name="Aiming", priority=1, period=60,
     #                    profile=True, trace=False, shares=(aimingReady, q0))
-    task1 = cotask.Task(motor1.Motor1, name="Motor_1", priority=1, period=60,
-                        profile=True, trace=False, shares=(motor1Ready,aimingReady, q0))
-    task2 = cotask.Task(motor2.Motor2, name="Motor_2", priority=2, period=60,
-                        profile=True, trace=False, shares=(motor2Ready,aimingReady, q0))
-    task3 = cotask.Task(motor2.Motor2, name="Motor_Servo", priority=2, period=60,
-                        profile=True, trace=False, shares=(motor1Ready,motor2Ready, q0))
-    
+    task1 = cotask.Task(motor1.Motor1, name="Motor_Yaw", priority=1, period=60,
+                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position))
+    task2 = cotask.Task(motor2.Motor2, name="Motor_Pitch", priority=2, period=60,
+                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position))
+    task3 = cotask.Task(trigger.Trigger, name="Motor_Servo", priority=3, period=60,
+                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position))
+    task4 = cotask.Task(MasterMind.mastermind, name="Master_Mind", priority=1, period=60,
+                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position))
+    task5 = cotask.Task(Camera.Camera, name="Camera", priority=4, period=60,
+                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position))
     cotask.task_list.append(task1)
     cotask.task_list.append(task2)
     cotask.task_list.append(task3)
+    cotask.task_list.append(task4)
+    cotask.task_list.append(task5)
 
     # Run the memory garbage collector to ensure memory is as defragmented as
     # possible before the real-time scheduler is started

@@ -14,90 +14,68 @@ import mlx_cam.py
 import motor2.py
 import motor1.py
 import controlServo.py
-import math
+import time
 
-#these are the angles/ticks we need to move per each value of the 8x8 matrix
-#each segment on table is 6" or 1.3 deg of rotation (X-Y sweep) for a 48" wide by 175" long range
-# 0.03611 rev/1.3 deg
-width_tot = 48
-length_tot = 175
-
-#the number of ticks/radians
-encoderticks_rad = 1
-
-#this is in rads; half the table
-angle_init = (math.atan((width_tot/2)/length_tot))
-
-
-#initializes the pitch positioning
-yaw_init = [(3.14 - angle_init)*encoderticks_rad]
-for j in range 7
-    yaw_init.append(yaw_init(0)+ (angle_init*encoderticks_rad))
-
-pitch_init = []
-angle_yaw = 1
-angle_pitch = 1   
-
-state = 0
-
-
+yaw = [3.2462093112223127, 3.21645250130056, 3.1865623154421208, 3.1565915287416435, 3.1265937784379427, 3.0966229917374655, 3.066732805879026, 3.0369759959572735]
+pitch = [-0.04871143583454709, -0.02624397319463619, -0.0037499824220233137, 0.01874780319774436, 0.04122662737298013, 0.06366384864918946, 0.08603707651884827, 0.1083243037649297]
 #value is the number set by the camera from the 8x8 "x" matrix
-def getpos(value):
-    """!
-    This function takes data from the camera and sets the pitch and yaw positioning
-    @param[in] value - value indicating the pitch and yaw finite positioning
-    """
-    #z = list[value]
-    position = [int(i) for i in str(value)]
-    yaw = position[0]
-    pitch = position[1]
+def angle(pos):
+    posoct = oct(pos+int('10',8))[2:]
+    position = [int(i) for i in posoct]
+    yawindex = position[0]-1
+    pitchindex = position[1]-1
+    yawang = yaw[yawindex]
+    pitchang = pitch[pitchindex]
+    return(yawang, pitchang)
 
-    return(yaw, pitch)
-
-def assignposvalue(yaw, pitch):
-    yaw_pos = yaw*angle_yaw
-    pitch_pos = pitch*angle_pitch
-
-    return(yaw_pos, pitch_pos)
-
-def update_motors():
-    motor1.Motor1()
-    motor2.Motor2()
-
-
-def fire():
-    """!
-    This function fires the gun using the servo motor functionality.
-    """
-    controlServo.pullTheTrigger()
-
-
-#wait for inputs
-if state == 1:
-    
-
-#get information from other tasks
-elif state == 2:
-    if updateangle == 1:
-        getpos()
-        assignposvalue()
-        #PWM_Calc.set_setpoint()
-        update_motors()
-
-#fire gun
-elif state == 3:
-    fire()
-#prompt error
-elif state == 4:
-
-else:
-
-
-# if state == 1:
-#     for i in range 8
-#         if i == camera.pitch[posx]
-#         return i
-#     for j in range 8
-#         if j == camera.yaw[posz]
-#         return j
-
+def mastermind(shares):
+    stuff = shares
+    state = 0
+    while True:
+        if state == 0:
+            state = 1
+            ready.put(0b0)
+        elif state == 1:
+            password = input("enter password: ")
+            if password == "2t1s"
+                print("starting...")
+                state = 4
+                cameraon.put(0b01)
+                starttime = time.time()
+            else
+                print("wrong Password!!")
+                
+        elif state == 2:
+            if updateang.get()==1:
+                pos = position.get()
+                yawang,pitchang = angle(pos)
+                theta1.put(yawang)
+                theta2.put(pitchang)
+                updatemotor.put(0b11)
+                updateang.put(0b0)
+            if ready.get()== 0b11
+                state ==3
+                ready.put(0b00)
+                fire.put(0b01)
+                
+        elif state == 3:
+            if (firedflg&0b01 == True)&(fire.get() == 0b00):
+                fired.put(firedflg & ~0b01)
+                state = 2
+                
+        elif state == 4:
+            #rotate 180
+            theta1.put(3.14159)
+            theta2.put(0)
+            updatemotor.put(0b11)
+            if ready.get() == 0b11 & time.time()-starttime > 5
+                state = 2
+                
+        else
+            state = 0
+            print("state out of range")
+            
+        yield state
+                    
+                
+        

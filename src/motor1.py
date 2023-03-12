@@ -3,8 +3,9 @@ from PWM_Calc import PWM_Calc
 import pyb, time
 from encoder_reader import EncoderClass
 from  motor_driver import MotorDriver
-import MasterMind.py
+import math
 
+encticperrad = 4000/(2*math.pi)
 """!The function initializes and runs the motor 1
 @param[in] reset - boolean value indicating if the motor should be reset or not
 This sets four states, 0, 1, 2, and 3. State 0 initializes the motor 1 and encoder ports.
@@ -21,28 +22,17 @@ def Motor1(reset):
             Motor1=MotorDriver(pyb.Pin.board.PA10,pyb.Pin.board.PB4,pyb.Pin.board.PB5,3)
             encoder1=EncoderClass(pyb.Pin.board.PB6,pyb.Pin.board.PB7,4)
             encoder1.zero()
-            time_step = 0.01
-           # Theta_Set = 100000
-
-            #this is the yaw?
-            Theta_Set = MasterMind.getpos(yaw)
             Theta_Set = 0
             KP = 0.01
             pwm1 = PWM_Calc()
             pwm1.set_setpoint(Theta_Set)
             pwm1.set_KP(KP)
-            state = 1
-            start = time.time_ns() // 1_000_000 #time in ms
-            
-            yield state
-        
-           
             state = 1 
             
         elif state == 1:
             motflg = updatemotor.get()
             if motflg & 0b01==True:
-                Theta_Set = theta1.get()
+                Theta_Set = theta1.get()*encticperrad
                 pwm1.set_setpoint(Theta_Set)
                 updatemotor.put(motflg&0b10)
             Theta_Act = encoder1.read()
