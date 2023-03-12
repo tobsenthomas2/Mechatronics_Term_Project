@@ -40,8 +40,8 @@ import cotask
 import task_share
 import pyb, time
 import motor1
-import motor2
-import trigger
+#import motor2
+#import trigger
 import Camera
 import MasterMind
 
@@ -59,32 +59,34 @@ if __name__ == "__main__":
     updatemotor = task_share.Share('B', thread_protect=False, name="Update_Motor")
     ready = task_share.Share('B', thread_protect=False, name="Ready")
     fired = task_share.Share('B', thread_protect=False, name="Fired")
+    aim = task_share.Share('B', thread_protect=False, name="Aim")
     fire = task_share.Share('B', thread_protect=False, name="Fire")
     theta1 = task_share.Share('f', thread_protect=False, name="thetayaw")
     theta2 = task_share.Share('f', thread_protect=False, name="thetapitch")
     cameraon = task_share.Share('B', thread_protect=False, name="Cameraon")
     updateang = task_share.Share('B', thread_protect=False, name="updateang")
     position = task_share.Share('B', thread_protect=False, name="Position")
-
+    KP = task_share.Share('f', thread_protect=False, name="KP")
+    KI = task_share.Share('f', thread_protect=False, name="KI")
     # Create the tasks. If trace is enabled for any task, memory will be
     # allocated for state transition tracing, and the application will run out
     # of memory after a while and quit. Therefore, use tracing only for 
     # debugging and set trace to False when it's not needed
     # task10 = cotask.Task(AIMINGFN, name="Aiming", priority=1, period=60,
     #                    profile=True, trace=False, shares=(aimingReady, q0))
-    task1 = cotask.Task(motor1.Motor1, name="Motor_Yaw", priority=1, period=60,
-                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position))
-    task2 = cotask.Task(motor2.Motor2, name="Motor_Pitch", priority=2, period=60,
-                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position))
-    task3 = cotask.Task(trigger.Trigger, name="Motor_Servo", priority=3, period=60,
-                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position))
-    task4 = cotask.Task(MasterMind.mastermind, name="Master_Mind", priority=1, period=60,
-                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position))
-    task5 = cotask.Task(Camera.Camera, name="Camera", priority=4, period=60,
-                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position))
+    task1 = cotask.Task(motor1.Motor1, name="Motor_Yaw", priority=1, period=20,
+                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
+    #task2 = cotask.Task(motor2.Motor2, name="Motor_Pitch", priority=2, period=60,
+                       # profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
+    #task3 = cotask.Task(trigger.Trigger, name="Motor_Servo", priority=3, period=60,
+                        #profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
+    task4 = cotask.Task(MasterMind.mastermind, name="Master_Mind", priority=1, period=200,
+                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
+    task5 = cotask.Task(Camera.Camera, name="Camera", priority=4, period=500,
+                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
     cotask.task_list.append(task1)
-    cotask.task_list.append(task2)
-    cotask.task_list.append(task3)
+    #cotask.task_list.append(task2)
+    #cotask.task_list.append(task3)
     cotask.task_list.append(task4)
     cotask.task_list.append(task5)
 

@@ -5,7 +5,7 @@ from encoder_reader import EncoderClass
 from  motor_driver import MotorDriver
 import math
 
-encticperrad = 4000/(2*math.pi)
+encticperrad = 16000/(2*math.pi)
 """!The function initializes and runs the motor 1
 @param[in] reset - boolean value indicating if the motor should be reset or not
 This sets four states, 0, 1, 2, and 3. State 0 initializes the motor 1 and encoder ports.
@@ -13,40 +13,47 @@ It also hardcodes in the KP and position. State 1 runs the encoder and PWM based
 positional inputs. This will run for 400ms. State 2 turns off the motor and begins to print data. State 3
 is used when data is done being transmitted. 
 """
-def Motor1(reset):
-    updatemotor,ready,fired,theta1 = shares
+def Motor1(shares):
+    updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI = shares
     state = 0
+    state1 = 0
     #reset=True
     while True:
         if state == 0:
             Motor1=MotorDriver(pyb.Pin.board.PA10,pyb.Pin.board.PB4,pyb.Pin.board.PB5,3)
             encoder1=EncoderClass(pyb.Pin.board.PB6,pyb.Pin.board.PB7,4)
             encoder1.zero()
-            Theta_Set = 0
-            KP = 0.01
+            Theta_Set = 16000
             pwm1 = PWM_Calc()
-            pwm1.set_setpoint(Theta_Set)
-            pwm1.set_KP(KP)
-            state = 1 
+            motflg1 = 0
+            state = 2
             
         elif state == 1:
-            motflg = updatemotor.get()
-            if motflg & 0b01==True:
-                Theta_Set = theta1.get()*encticperrad
-                pwm1.set_setpoint(Theta_Set)
-                updatemotor.put(motflg&0b10)
             Theta_Act = encoder1.read()
             PWM = pwm1.Run(Theta_Act)
             Motor1.set_duty_cycle(PWM)
-            if abs(Theta_Set-Theta_Act)<10
-                state = 2
+            if abs(Theta_Set-Theta_Act)<0.04*encticperrad*250/30:
                 readyflg = ready.get()
                 ready.put(readyflg | 0b01)
+                print("motor1 ready")
+            if ready.get()==0b11:
+                print(Theta_Act/encticperrad/250*30)
                 Motor1.set_duty_cycle(0)
+                state = 2
                 
         elif state == 2:
-            if fired.get()==True
-                state = 1
+            motflg = updatemotor.get()
+            if motflg & 0b01==True:
+                pwm1.resetint()
+                pwm1.set_KP_KI_KD(KP.get(),KI.get(),0)
+                Theta_Set = theta1.get()*encticperrad*250/30
+                pwm1.set_setpoint(Theta_Set)
+                updatemotor.put(motflg&0b10)
+                state=1
+
+        if state != state1:
+            print("Mator1 is at state "+str(state))
+        state1 = state
                 
         yield state
 

@@ -9,11 +9,7 @@
 @author Toby Darci, Tobias Thomas, Sydney Gothenquist
 @date   2023-Mar-11 
     """
-#setting motor positions from the camera outputs
-import mlx_cam.py
-import motor2.py
-import motor1.py
-import controlServo.py
+
 import time
 
 yaw = [3.2462093112223127, 3.21645250130056, 3.1865623154421208, 3.1565915287416435, 3.1265937784379427, 3.0966229917374655, 3.066732805879026, 3.0369759959572735]
@@ -29,52 +25,68 @@ def angle(pos):
     return(yawang, pitchang)
 
 def mastermind(shares):
-    stuff = shares
+    updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI = shares
     state = 0
+    state1 = 0
     while True:
         if state == 0:
             state = 1
-            ready.put(0b0)
+            KP.put(0)
+            KI.put(0)
+            ready.put(0b10)
         elif state == 1:
-            password = input("enter password: ")
-            if password == "2t1s"
+            #password = input("enter password: ")
+            password = "2t1s"
+            if password == "2t1s":
                 print("starting...")
                 state = 4
                 cameraon.put(0b01)
                 starttime = time.time()
-            else
+                theta1.put(3.14159)
+                theta2.put(0)
+                KP.put(0.02)
+                KI.put(0)
+                updatemotor.put(0b11)
+            else:
                 print("wrong Password!!")
                 
         elif state == 2:
-            if updateang.get()==1:
+            if updateang.get()==0b01:
                 pos = position.get()
                 yawang,pitchang = angle(pos)
+                KP.put(0.025)
+                KI.put(0.005)
                 theta1.put(yawang)
                 theta2.put(pitchang)
                 updatemotor.put(0b11)
                 updateang.put(0b0)
-            if ready.get()== 0b11
-                state ==3
-                ready.put(0b00)
+            if ready.get()== 0b11:
+                state = 3
+                ready.put(0b10)
                 fire.put(0b01)
                 
         elif state == 3:
+            firedflg = 1
+            fire.put(0)
             if (firedflg&0b01 == True)&(fire.get() == 0b00):
                 fired.put(firedflg & ~0b01)
+                print("fire!")
                 state = 2
+                updateang.put(0b11)
                 
         elif state == 4:
             #rotate 180
-            theta1.put(3.14159)
-            theta2.put(0)
-            updatemotor.put(0b11)
-            if ready.get() == 0b11 & time.time()-starttime > 5
+            if (ready.get() == 0b11) & (time.time()-starttime > 5):
                 state = 2
-                
-        else
+                updateang.put(0b01)
+              
+        else:
             state = 0
             print("state out of range")
             
+        if state != state1:
+            print("Mastermind is at state "+str(state))
+        state1 = state
         yield state
                     
                 

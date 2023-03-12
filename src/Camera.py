@@ -1,31 +1,33 @@
-def Camera(shares)
-    stuff = shares
+import time
+
+class cam:
+    def __init__():
+        pass
+    
+    def scan():
+        return 8
+    
+    def poscalc(camscan):
+        return camscan
+
+def Camera(shares):
+    updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI = shares
     state = 0
+    state1 = 0
     while True:
         if state == 0:
             state = 1
-            picarray = []
-            imgsize = 24*32
-            camscan = cam.scan()
         elif state == 1:
-            #Off
-            if cameraon.get == True:
-                state = 2
-        elif state == 2:
-            #Getting image
-            camchunk = next(camscan)
-            picarray.append(camchunk)
-            if len(picarray)==imgsize:
-                state = 3
-        elif state == 3:
-            pos = cam.poscalc(picarray)
-            if pos != position.get()
-                updateang.put(0b01)
+            angflg = updateang.get()
+            if angflg == 0b11:
+                camscan = cam.scan()
+                pos = cam.poscalc(camscan)
                 position.put(pos)
-            if cameraon.get == False:
-                state = 1
-        else
+                updateang.put(angflg & 0b01)
+        else:
             state = 0
             print("state out of range")
-            
+        if state != state1:
+            print("Camera is at state "+str(state))
+        state1 = state
         yield state
