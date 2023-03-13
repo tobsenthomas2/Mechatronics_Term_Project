@@ -42,7 +42,7 @@ import pyb, time
 import motor1
 import motor2
 #import trigger
-import Camera
+import CameraRaw
 import MasterMind
 
 
@@ -82,7 +82,7 @@ if __name__ == "__main__":
                         #profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
     task4 = cotask.Task(MasterMind.mastermind, name="Master_Mind", priority=1, period=200,
                         profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
-    task5 = cotask.Task(Camera.Camera, name="Camera", priority=4, period=500,
+    task5 = cotask.Task(CameraRaw.cameraFN, name="Camera", priority=4, period=500,
                         profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
     cotask.task_list.append(task1)
     cotask.task_list.append(task2)
