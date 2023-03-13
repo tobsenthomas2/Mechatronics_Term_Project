@@ -14,27 +14,32 @@ Links to additional files as appropriate.  For example, if you have a directory 
 
 The goal of this project is to conduct a duel. This duel will be conducted with a "launcher" or a nerf gun that we have added attachments to to fit our specific needs. The duel is conducted by shooting an opponent opposite to the launcher, with points awarded for a hit and subtracted for a miss. Upon running the code, the launcher will be turned on, and rotate 180 degrees to start. From there, it will take data from a thermal camera. Based on where the thermal camera picks up the highest heat concentration, the program will run to move the launcher to the position of this heat concentration which is represented as an "X" in an 8x8 grid of the entire output of the thermal camera. Based on the dimensions of the table that we are "dueling" on, we calculated the 8 pitch positions and 8 yaw positions that the launcher may need to move to based on where the opponent is standing which are stored as radians in two lists. We added two pulley systems with two DC motors to control the pitch and yaw of the launcher. This is what we are using to control the positioning and to move the launcher to the position that was output by the thermal camera. 
 
-We created a task function and utilized a scheduler that would trigger different tasks to run at varied set intervals. We adjusted these intervals to find the optimal interval that would give us a clean response and take up the least amount of processing time. For example, our motor runs at a smaller period than the _____. Using our thermal camera data, we adjusted the KP and KI values to get us within a range that is close enough to hit the target with our launcher. 
+We created a task function and utilized a scheduler that would trigger different tasks to run at varied set intervals. We adjusted these intervals to find the optimal interval that would give us a clean response and take up the least amount of processing time. For example, our motors run at 20ms with the yaw motor (motor 1) having task priority 1 and the pitch motor (motor 2) having priority 2. Mastermind, the main hub for our motor launching capabilities has a priority of 1 and period of 200ms. The camera functions have a priority of 4 with a period of 500ms. Using our thermal camera data, we adjusted the KP and KI values to get us within a range that is close enough to hit the target with our launcher. 
 
 # Testing:
 
-We plotted our response intitally with a generalized PID controller that simulated the dynamics of our system. After we built the launcher, we plotted the data from the response. Our overshoot and discontinuity was minimized using a KI and KP value of _____ and the best period we had was ____ ms. 
+We plotted our response intitally with a generalized PID controller that simulated the dynamics of our system. After we built the launcher, we plotted the data from the response. Our overshoot and discontinuity was minimized using a KI value of 0.005 and KP value of 0.025 and the best period we had was 20 ms. 
 
 You can see the dataset in the following plot:
 ![alt text](https://github.com/tobsenthomas2/lab3/blob/main/FigurePeriodsTill60.png)
 
 
-We also tried different higher values to see when it starts getting really bad. After about 110ms, there starts to be noticable discontinuity, while below 110ms the main issue is the motor overshooting. You can see that in the following Plot:
+We tried differing values for the KP and KI gain values, however when we increased KI too large, we found that we overshot too much, and similarly with the KP value. You can see that in the following Plot:
 
 ![alt text](https://github.com/tobsenthomas2/lab3/blob/main/PlotPeriodsTill200.png)
 
 # Software Overview:
 
+We utilized cotask and task share in our code. Cotask is a multitasking real-time software from cotask.py. For communication between our tasks, we used interrupt service routines and cooperatively scheduled "regular" tasks as found in task_share.py. We also used the "time" library for timing functionality and referenced GPIO pins as well as PWM. We used i2c to send and recieve data between different components. 
+
 # Hardware Overview:
 
-We used two _____ motors, one servo motor, and one ____ thermal camera. We ran these on the _____ nucleo at 12 VDC with 0.5 A.
+STM32 ….., MLX90670 camera, SHM07A1 Motor Driver
 
-Our design utilizes two pulley systems to "steer" our launcher, with a servo motor that triggers the launcher itself. The design implements laser cut and 3d printed pieces, along with one purchased piece from HomeDepot. 
+We ran our MicroPython on the Nucleo-64 boards from ST Microelectronics with a simple custom board called the Shoe of Brian which sits below the Nucleo and houses a USB OTG connector. The specific board is a Nucleo-L476RG board.
+We used two AMETEK/PITTMAN PG6712A077-R3 6665 motors, one SMRAZA SG90 micro servo motor, and one MLX9040 thermal camera. We ran these on the nucleo at 12 VDC with 0.5 A.
+
+Our design utilizes two pulley systems to steer our launcher, with a servo motor that triggers the launcher itself. The design implements laser cut and 3d printed pieces, along with one purchased piece from HomeDepot. 
 
 The piece from HomeDepot consists of essentially ball bearings between two plates that allows for rotation. We can spin this piece to change the yaw of the launcher.
 A picture is shown here:
@@ -44,7 +49,7 @@ The lasercut pieces are made from 0.25 inch plywood. These are the base plates t
 The individual CAD files are shown here:
 
 
-The 3D printed pieces are 4 gears, 2 motor mountings, a NERF rail mounting and gun body mounting, as well as a mounting piece for one of the rotating plates and two stands for the rotating pitch plate. The gear ratios were 1:10 for ____ and __:__ for ____
+The 3D printed pieces are 4 gears, 2 motor mountings, a NERF rail mounting and gun body mounting, as well as a mounting piece for one of the rotating plates and two stands for the rotating pitch plate. The gear ratios were 1:8.33 for yaw pulley mechanism and 1:8 for the pitch pulley mechanism
 The individual CAD files are shown here:
 
 The overall assembly is shown here:
