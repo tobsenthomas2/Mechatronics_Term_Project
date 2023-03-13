@@ -44,17 +44,16 @@ def mastermind(shares):
             state = 1
             KP.put(0)
             KI.put(0)
-            ready.put(0b10)
+            ready.put(0b00)
         elif state == 1:
             #password = input("enter password: ")
             password = "2t1s"
             if password == "2t1s":
                 print("starting...")
                 state = 4
-                cameraon.put(0b01)
                 starttime = time.time()
                 theta1.put(3.14159)
-                theta2.put(0)
+                theta2.put(0.3)
                 KP.put(0.02)
                 KI.put(0)
                 updatemotor.put(0b11)
@@ -73,7 +72,7 @@ def mastermind(shares):
                 updateang.put(0b0)
             if ready.get()== 0b11:
                 state = 3
-                ready.put(0b10)
+                ready.put(0b00)
                 fire.put(0b01)
                 
         elif state == 3:
@@ -83,7 +82,7 @@ def mastermind(shares):
                 fired.put(firedflg & ~0b01)
                 print("fire!")
                 state = 2
-                updateang.put(0b11)
+                updateang.put(0b01)
                 
         elif state == 4:
             #rotate 180
