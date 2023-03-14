@@ -14,8 +14,7 @@ Send the actuation signal to the motor driver which you have already written to 
 
 
 class PWM_Calc:
-    """!
-    Class PWM_Calc: A class to implement a Proportional-Windup Controller.
+    """!Class PWM_Calc: A class to implement a Proportional-Windup Controller.
 The class stores the time, position, error, and PWM values and has functions
 to set the controller's parameters, run the control loop, and print the stored
 data to the serial port.

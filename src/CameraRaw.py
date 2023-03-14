@@ -174,7 +174,7 @@ class MLX_Cam:
             index=index+1
         return valArray.index(max(valArray))
 
-def cameraFN ():
+def cameraFN (shares):
     
     updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI = shares
     
@@ -211,7 +211,7 @@ def cameraFN ():
             if angflg == 0b11:
                 image = camera.get_image()
                 pos = camera.getPositionIndex(image)                
-                camera.printDirection(pos)
+                #camera.printDirection(pos)#for debug
                 position.put(pos)
                 updateang.put(angflg & 0b01)
         else:

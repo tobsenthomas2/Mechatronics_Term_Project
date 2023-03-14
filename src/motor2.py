@@ -4,13 +4,6 @@ import pyb, time
 from encoder_reader import EncoderClass
 from  motor_driver import MotorDriver
 import math
-"""!
-@file motor2.py
-    This file contains all of the set up for the second motor that controls the pitch of the launcher.
-
-@author Toby Darci, Tobias Thomas, Sydney Gothenquist
-@date   2023-Mar-11 
-    """
 
 encticperrad = 16000/(2*math.pi)
 """!The function initializes and runs the motor 1
@@ -45,7 +38,7 @@ def Motor2(shares):
                 print("motor1 ready")
             if ready.get()==0b11:
                 print(Theta_Act/encticperrad/8)
-                Motor1.set_duty_cycle(0)
+                Motor2.set_duty_cycle(0)
                 state = 2
                 
         elif state == 2:
