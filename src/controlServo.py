@@ -106,6 +106,7 @@ def fire(shares):
        
         if(fire.get()==1):
             print("FIREEEEE!!!!!")
+            time.sleep(0.5)
             Motor1.set_duty_cycle(10)
             time.sleep(1)
             Motor1.set_duty_cycle(5)

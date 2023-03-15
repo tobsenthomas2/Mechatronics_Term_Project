@@ -13,15 +13,22 @@
 import time
 import pyb
 
-yaw = [3.2462093112223127, 3.21645250130056, 3.1865623154421208, 3.1565915287416435, 3.1265937784379427, 3.0966229917374655, 3.066732805879026, 3.0369759959572735]
-pitch = [-0.04871143583454709, -0.02624397319463619, -0.0037499824220233137, 0.01874780319774436, 0.04122662737298013, 0.06366384864918946, 0.08603707651884827, 0.1083243037649297]
+#yaw = [3.348585, 3.290483, 3.231351, 3.171584, 3.111602, 3.051835, 2.992703, 2.934601]
+yaw = [2.9346, 2.9927, 3.0518, 3.1116, 3.1716, 3.2314, 3.2905, 3.3486]
+#pitch = [0, 0.1016485, 0.06590443, 0.029991, -0.005999927, -0.04197533, 0, 0]
+pitch = [0, 0.102, 0.066, 0.03, 0, 0, 0, 0]
+for i in range(len(pitch)):
+    pitch[i]+=0.01
+
 #value is the number set by the camera from the 8x8 "x" matrix
 buttonpin = pyb.Pin(pyb.Pin.board.PC13,pyb.Pin.IN,)
 def angle(pos):
     posoct = oct(pos+int('10',8))[2:]
     position = [int(i) for i in posoct]
-    yawindex = position[0]-1
-    pitchindex = position[1]-1
+    yawindex = position[1]-1
+    print(yawindex)
+    pitchindex = position[0]-1
+    print(pitchindex)
     yawang = yaw[yawindex]
     pitchang = pitch[pitchindex]
     return(yawang, pitchang)
@@ -43,8 +50,8 @@ def mastermind(shares):
                 starttime = time.time()
                 theta1.put(3.14159)
                 theta2.put(0)
-                KP.put(0.02)
-                KI.put(0)
+                KP.put(0.018)
+                KI.put(00.001)
                 updatemotor.put(0b11)        
         elif state == 2:
             if updateang.get()==0b01:
@@ -52,8 +59,8 @@ def mastermind(shares):
                 print(oct(pos+int('10',8))[2:])
                 yawang,pitchang = angle(pos)
                 print("yaw: " +str(yawang)+"\npitch: "+str(pitchang))
-                KP.put(0.025)
-                KI.put(0.005)
+                KP.put(0.008)
+                KI.put(0.01)
                 theta1.put(yawang)
                 theta2.put(pitchang)
                 updatemotor.put(0b11)

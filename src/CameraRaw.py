@@ -210,7 +210,7 @@ def cameraFN (shares):
             if updateang.get() == 0b11:
                 image = camera.get_image()
                 pos = camera.getPositionIndex(image)                
-                #camera.printDirection(pos)#for debug
+                camera.printDirection(pos)#for debug
                 position.put(pos)
                 updateang.put(0b01)
         else:

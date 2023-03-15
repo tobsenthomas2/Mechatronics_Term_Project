@@ -1,15 +1,19 @@
 import math
-width_tot = 48
+width_tot = 96
 length_tot = 200
 yaw_init = math.pi
 pitch_init = 0
 height_gun = 12
 height_tot = 36
 yaw = []
-pitch = []
+pitch = [0]
 for i in range(8):
     yaw.append(yaw_init-math.atan((width_tot*(0.5+i)/8-width_tot/2)/length_tot))
-    pitch.append(pitch_init+math.atan((height_tot*(0.5+i)/8-height_gun)/length_tot))
+    
+for i in range(5):
+    pitch.append(pitch_init+math.atan((height_tot*(4.5-i)/5-height_gun)/length_tot))
+pitch.append(0)
+pitch.append(0)
 print(yaw)
 print(pitch)
 def angle(pos):

@@ -75,9 +75,9 @@ if __name__ == "__main__":
     # debugging and set trace to False when it's not needed
     # task10 = cotask.Task(AIMINGFN, name="Aiming", priority=1, period=60,
     #                    profile=True, trace=False, shares=(aimingReady, q0))
-    task1 = cotask.Task(motor1.Motor1, name="Motor_Yaw", priority=1, period=60,
+    task1 = cotask.Task(motor1.Motor1, name="Motor_Yaw", priority=2, period=40,
                         profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
-    task2 = cotask.Task(motor2.Motor2, name="Motor_Pitch", priority=2, period=60,
+    task2 = cotask.Task(motor2.Motor2, name="Motor_Pitch", priority=2, period=40,
                         profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
     task3 = cotask.Task(controlServo.fire, name="Motor_Servo", priority=3, period=100,
                         profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))

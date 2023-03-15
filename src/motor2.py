@@ -6,6 +6,7 @@ from  motor_driver import MotorDriver
 import math
 
 encticperrad = 16000/(2*math.pi)
+
 """!The function initializes and runs the motor 1
 @param[in] reset - boolean value indicating if the motor should be reset or not
 This sets four states, 0, 1, 2, and 3. State 0 initializes the motor 1 and encoder ports.
@@ -24,7 +25,7 @@ def Motor2(shares):
             encoder2=EncoderClass(pyb.Pin.board.PC6,pyb.Pin.board.PC7,8)
             encoder2.zero()
             Theta_Set = 16000
-            pwm2 = PWM_Calc()
+            pwm2 = PWM_Calc(5,5)
             motflg1 = 0
             state = 2
             
@@ -46,7 +47,7 @@ def Motor2(shares):
             motflg = updatemotor.get()
             if motflg >> 1 == True:
                 pwm2.resetint()
-                pwm2.set_KP_KI_KD(KP.get(),KI.get(),0)
+                pwm2.set_KP_KI_KD(0.005,0.005,0)
                 Theta_Set = theta2.get()*encticperrad*8
                 pwm2.set_setpoint(Theta_Set)
                 updatemotor.put(motflg&0b01)

@@ -22,7 +22,7 @@ data to the serial port.
 The constructor initializes the instance variables `KP_set`, `Theta_Set`, `time`, `position`, `error`, and `pwm` to 0.
 """
     
-    def __init__(self):
+    def __init__(self,PWMmin,PWMcutoff):
         self.KP_set = 0
         self.KI_set = 0
         self.KD_set = 0
@@ -30,6 +30,8 @@ The constructor initializes the instance variables `KP_set`, `Theta_Set`, `time`
         self.timelast = 0
         self.error_int = 0
         self.error_der = 0
+        self.PWMmin = PWMmin
+        self.PWMcutoff = PWMcutoff
    
     def set_KP_KI_KD(self, KP, KI, KD):
         """!set_KP
@@ -76,7 +78,14 @@ Returns, the control output, `PWM`, as a float.
         #self.error_der = (error-self.error[errorind])/0.05
         self.error_int += error*deltat
         PWM = (error)*self.KP_set + self.error_int*self.KI_set #- self.error_der*self.KD_set
-        
+        if PWM>self.PWMcutoff:
+            PWM+=self.PWMmin-self.PWMcutoff
+        elif PWM<-self.PWMcutoff:
+            PWM-=self.PWMmin+self.PWMcutoff
+        elif PWM ==0:
+            PWM = 0
+        else:
+            PWM=PWM*self.PWMmin/self.PWMcutoff
         #PWM needs to be between 0-1 (0*100%)
         
         return PWM

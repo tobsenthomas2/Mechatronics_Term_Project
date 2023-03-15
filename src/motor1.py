@@ -24,7 +24,7 @@ def Motor1(shares):
             encoder1=EncoderClass(pyb.Pin.board.PB6,pyb.Pin.board.PB7,4)
             encoder1.zero()
             Theta_Set = 16000
-            pwm1 = PWM_Calc()
+            pwm1 = PWM_Calc(20,5)
             motflg1 = 0
             state = 2
             
