@@ -42,8 +42,9 @@ import pyb, time
 import motor1
 import motor2
 #import trigger
-import Camera
+import CameraRaw
 import MasterMind
+import controlServo
 
 
 
@@ -74,19 +75,19 @@ if __name__ == "__main__":
     # debugging and set trace to False when it's not needed
     # task10 = cotask.Task(AIMINGFN, name="Aiming", priority=1, period=60,
     #                    profile=True, trace=False, shares=(aimingReady, q0))
-    task1 = cotask.Task(motor1.Motor1, name="Motor_Yaw", priority=1, period=20,
+    task1 = cotask.Task(motor1.Motor1, name="Motor_Yaw", priority=1, period=60,
                         profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
-    task2 = cotask.Task(motor2.Motor2, name="Motor_Pitch", priority=2, period=20,
+    task2 = cotask.Task(motor2.Motor2, name="Motor_Pitch", priority=2, period=60,
                         profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
-    #task3 = cotask.Task(trigger.Trigger, name="Motor_Servo", priority=3, period=60,
-                        #profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
+    task3 = cotask.Task(controlServo.fire, name="Motor_Servo", priority=3, period=100,
+                        profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
     task4 = cotask.Task(MasterMind.mastermind, name="Master_Mind", priority=1, period=200,
                         profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
-    task5 = cotask.Task(Camera.Camera, name="Camera", priority=4, period=500,
+    task5 = cotask.Task(CameraRaw.cameraFN, name="Camera", priority=4, period=500,
                         profile=True, trace=False, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))
     cotask.task_list.append(task1)
     cotask.task_list.append(task2)
-    #cotask.task_list.append(task3)
+    cotask.task_list.append(task3)
     cotask.task_list.append(task4)
     cotask.task_list.append(task5)
 

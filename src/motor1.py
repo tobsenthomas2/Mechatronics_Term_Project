@@ -4,13 +4,6 @@ import pyb, time
 from encoder_reader import EncoderClass
 from  motor_driver import MotorDriver
 import math
-"""!
-@file motor1.py
-    This file contains all of the set up for the first motor that controls the yaw of the launcher. 
-
-@author Toby Darci, Tobias Thomas, Sydney Gothenquist
-@date   2023-Mar-11 
-    """
 
 encticperrad = 16000/(2*math.pi)
 """!The function initializes and runs the motor 1
@@ -42,14 +35,15 @@ def Motor1(shares):
             if abs(Theta_Set-Theta_Act)<0.04*encticperrad*250/30:
                 readyflg = ready.get()
                 ready.put(readyflg | 0b01)
-                print("motor1 ready")
-            if ready.get()==0b11:
-                print(Theta_Act/encticperrad/250*30)
+                print("motor 1: "+str(Theta_Act/encticperrad/250*30))
                 Motor1.set_duty_cycle(0)
                 state = 2
                 
         elif state == 2:
             motflg = updatemotor.get()
+            if fired.get()&0b01 == True:
+                state = 0
+                fired.put(fired.get()&0b10)
             if motflg & 0b01==True:
                 pwm1.resetint()
                 pwm1.set_KP_KI_KD(KP.get(),KI.get(),0)
