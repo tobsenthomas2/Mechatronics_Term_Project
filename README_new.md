@@ -80,7 +80,7 @@ The individual CAD files are shown here:
 
 Base Plate:
 
-![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/BasePlate.png)
+![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/BiggestBasePlate.png)
 
 Rotating Base Plate:
 
