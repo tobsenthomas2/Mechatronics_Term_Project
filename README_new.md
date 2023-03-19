@@ -17,6 +17,7 @@ The goal of this project is to conduct a duel. This duel will be conducted with 
 We created a task function and utilized a scheduler that would trigger different tasks to run at varied set intervals. We adjusted these intervals to find the optimal interval that would give us a clean response and take up the least amount of processing time. For example, our motors run at 20ms with the yaw motor (motor 1) having task priority 1 and the pitch motor (motor 2) having priority 2. Mastermind, the main hub for our motor launching capabilities has a priority of 1 and period of 200ms. The camera functions have a priority of 4 with a period of 500ms. Using our thermal camera data, we adjusted the KP and KI values to get us within a range that is close enough to hit the target with our launcher. 
 
 Launcher Overall:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/IMG_2658.heic)
 
 
@@ -27,12 +28,15 @@ We plotted our response intitally with a generalized PID controller that simulat
 We tried differing values for the KP and KI gain values, however when we increased KI too large, we found that we overshot too much, and similarly with the KP value.
 
 Failed Test Trial:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/BadTest.MOV)
 
 Launcher Testing:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/IMG_2624.MOV)
 
 Launcher Testing:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/IMG_2658.mov)
 
 # Software Overview:
@@ -46,15 +50,19 @@ We ran our MicroPython on the Nucleo-64 boards from ST Microelectronics with a s
 We used two AMETEK/PITTMAN PG6712A077-R3 6665 motors, one SMRAZA SG90 micro servo motor, and one MLX9040 thermal camera. We ran these on the nucleo at 12 VDC with 0.5 A.
 
 Motor Drawing:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/MotorSpecs.jpeg)
 
 Nucleo Pins:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/NucleoPins.png)
 
 Thermal Camera:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/ThermalCamera.png)
 
 Micro Servo Motor:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/MicroServo.png)
 
 
@@ -63,6 +71,7 @@ Our design utilizes two pulley systems to steer our launcher, with a servo motor
 The piece from HomeDepot consists of essentially ball bearings between two plates that allows for rotation. We can spin this piece to change the yaw of the launcher.
 
 A picture is shown here:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/HomeDepotLazySusan.png)
 
 The lasercut pieces are made from 0.25 inch plywood. These are the base plates that the NERF gun sits on, as well as the main base plate, and the other base plates.
@@ -70,15 +79,19 @@ The lasercut pieces are made from 0.25 inch plywood. These are the base plates t
 The individual CAD files are shown here:
 
 Base Plate:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/BasePlate.png)
 
 Rotating Base Plate:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/BasePlate.png)
 
 Nerf Gun Mounting Plate:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/GunBasePlate.png)
 
 Vertical Motor Mounting Connector Piece:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/MotorMounting.png)
 
 The 3D printed pieces are 4 gears, 2 motor mountings, a NERF rail mounting and gun body mounting, as well as a mounting piece for one of the rotating plates and two stands for the rotating pitch plate. The gear ratios were 1:8.33 for yaw pulley mechanism and 1:8 for the pitch pulley mechanism
@@ -86,30 +99,39 @@ The 3D printed pieces are 4 gears, 2 motor mountings, a NERF rail mounting and g
 The individual CAD files are shown here:
 
 Motor Mountings:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/MotorHolder.png)
 
 Nerf Gun Mount:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/NerfMounting.png)
 
 Nerf Rail Mount:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/NerfRailMount.png)
 
 Spur Gear(s):
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/SpurGear.png)
 
 Pitch Gear:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/RotatingBigPitchGear.png)
 
 Yaw Gear:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/BaseBigGear.png)
 
 Rotating Mount:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/RotatingMount.png)
 
 Nerf Mounting Plate Connector:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/SmallMount.png)
 
 The overall assembly is shown here:
+
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/Assembly.png)
 
 
