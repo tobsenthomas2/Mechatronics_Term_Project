@@ -175,7 +175,11 @@ class MLX_Cam:
         return valArray.index(max(valArray))
 
 def cameraFN (shares):
-    
+     """!
+        @brief   funktion for the task to controll camera related content
+       
+        @param   shares: all shared variables between tasks
+        """
     updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI = shares
     
     # The following import is only used to check if we have an STM32 board such
