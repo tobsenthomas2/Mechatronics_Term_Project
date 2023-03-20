@@ -24,13 +24,21 @@
 */
 var NAVTREE =
 [
-  [ "Lab 3", "index.html", [
+  [ "Term_Project", "index.html", [
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ]
+      ] ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ]
       ] ]
@@ -43,7 +51,10 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"____init_____8py.html",
+"classmlx90640_1_1_m_l_x90640.html#adee03866cd313b11ceab0bea606225b2",
+"classmotor__driver_1_1_motor_driver.html#a199c4470f110ddf92498824a9bf1e4a9",
+"namespacemotor__driver.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
