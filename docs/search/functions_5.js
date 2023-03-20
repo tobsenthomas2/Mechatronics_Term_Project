@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['get_0',['get',['../classtask__share_1_1_queue.html#af2aef1dd3eed21c4b6c2e601cb8497d4',1,'task_share.Queue.get()'],['../classtask__share_1_1_share.html#a599cd89ed1cd79af8795a51d8de70d27',1,'task_share.Share.get()']]],
-  ['get_5ftrace_1',['get_trace',['../classcotask_1_1_task.html#a6e51a228f985aec8c752bd72a73730ae',1,'cotask::Task']]],
-  ['go_2',['go',['../classcotask_1_1_task.html#a78e74d18a5ba94074c2b5309394409a5',1,'cotask::Task']]]
+  ['field_5fdesc_0',['field_desc',['../namespacemlx90640_1_1utils.html#a19a95d2f64d01c3cb326b947a9bad086',1,'mlx90640::utils']]],
+  ['fire_1',['fire',['../namespacecontrol_servo.html#a8c7a9ca55815937732bcaa65d7dea773',1,'controlServo']]],
+  ['from_5ffreq_2',['from_freq',['../classmlx90640_1_1_refresh_rate.html#ad8589e2102036077104ad2bb0a3c79a1',1,'mlx90640::RefreshRate']]],
+  ['full_3',['full',['../classtask__share_1_1_queue.html#a0482d70ce6405fd8d85628b5cf95d471',1,'task_share::Queue']]]
 ];

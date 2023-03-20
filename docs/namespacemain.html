@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Lab 3: main Namespace Reference</title>
+<title>Term_Project: main Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="MELogo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Lab 3<span id="projectnumber">&#160;V.1</span>
+   <div id="projectname">Term_Project<span id="projectnumber">&#160;V.1</span>
    </div>
-   <div id="projectbrief">Controlling twoe different motors, sending data back and forth and plotting graphs for different periods - Sydney Gothenquist, Toby Moss Darci-Maher, Tobias Thomas</div>
+   <div id="projectbrief">Automated target recognition and control and aiming mechanisml of a nerf gun - Sydney Gothenquist, Toby Moss Darci-Maher, Tobias Thomas</div>
   </td>
  </tr>
  </tbody>
@@ -99,41 +99,150 @@ $(document).ready(function(){initNavTree('namespacemain.html',''); initResizable
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a3ebd9bb4d62bde9a647a803917e0e434"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a3ebd9bb4d62bde9a647a803917e0e434">share0</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('h', thread_protect=False, name=&quot;Share 0&quot;)</td></tr>
-<tr class="separator:a3ebd9bb4d62bde9a647a803917e0e434"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae956baf22be01b82f8f5cc7ffc167d69"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#ae956baf22be01b82f8f5cc7ffc167d69">q0</a></td></tr>
-<tr class="separator:ae956baf22be01b82f8f5cc7ffc167d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe3bbfd8d9fbf885ff8470fcf720b47d"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#abe3bbfd8d9fbf885ff8470fcf720b47d">updatemotor</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Update_Motor&quot;)</td></tr>
+<tr class="separator:abe3bbfd8d9fbf885ff8470fcf720b47d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdbc73d09ef3987b6b19e82689d4a600"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#afdbc73d09ef3987b6b19e82689d4a600">ready</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Ready&quot;)</td></tr>
+<tr class="separator:afdbc73d09ef3987b6b19e82689d4a600"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc54395e44b56745919ce6dad175982e"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#abc54395e44b56745919ce6dad175982e">fired</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Fired&quot;)</td></tr>
+<tr class="separator:abc54395e44b56745919ce6dad175982e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affa9d5fb13d17c937dc49005739b71cf"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#affa9d5fb13d17c937dc49005739b71cf">aim</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Aim&quot;)</td></tr>
+<tr class="separator:affa9d5fb13d17c937dc49005739b71cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c5db6ec68ed3dbd239dc283de433c8d"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a7c5db6ec68ed3dbd239dc283de433c8d">fire</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Fire&quot;)</td></tr>
+<tr class="separator:a7c5db6ec68ed3dbd239dc283de433c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5c82d3f2b5273ab83462dfee57623e9"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#aa5c82d3f2b5273ab83462dfee57623e9">theta1</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('f', thread_protect=False, name=&quot;thetayaw&quot;)</td></tr>
+<tr class="separator:aa5c82d3f2b5273ab83462dfee57623e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb7db0b2c532851f0f0a9934371aaa44"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#adb7db0b2c532851f0f0a9934371aaa44">theta2</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('f', thread_protect=False, name=&quot;thetapitch&quot;)</td></tr>
+<tr class="separator:adb7db0b2c532851f0f0a9934371aaa44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa61f81f46ead5f4d901fd546cbc9bd36"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#aa61f81f46ead5f4d901fd546cbc9bd36">cameraon</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Cameraon&quot;)</td></tr>
+<tr class="separator:aa61f81f46ead5f4d901fd546cbc9bd36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1825ef01b63f328d5c5edf28e4b81fb"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#ae1825ef01b63f328d5c5edf28e4b81fb">updateang</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;updateang&quot;)</td></tr>
+<tr class="separator:ae1825ef01b63f328d5c5edf28e4b81fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae95e1114640f957aafb8c6101a8a29f9"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#ae95e1114640f957aafb8c6101a8a29f9">position</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Position&quot;)</td></tr>
+<tr class="separator:ae95e1114640f957aafb8c6101a8a29f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae549c882532bb3b3b5b40189745ad059"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#ae549c882532bb3b3b5b40189745ad059">KP</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('f', thread_protect=False, name=&quot;KP&quot;)</td></tr>
+<tr class="separator:ae549c882532bb3b3b5b40189745ad059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8821ea75b115930a21b1103b6b58384b"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a8821ea75b115930a21b1103b6b58384b">KI</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('f', thread_protect=False, name=&quot;KI&quot;)</td></tr>
+<tr class="separator:a8821ea75b115930a21b1103b6b58384b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1550fe10203477b8031a6d4b94e50944"><td class="memItemLeft" align="right" valign="top">cotask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a1550fe10203477b8031a6d4b94e50944">task1</a></td></tr>
 <tr class="separator:a1550fe10203477b8031a6d4b94e50944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaba6cfdb6abf58fda13c27a38b8b9310"><td class="memItemLeft" align="right" valign="top">cotask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#aaba6cfdb6abf58fda13c27a38b8b9310">task2</a></td></tr>
+<tr class="separator:aaba6cfdb6abf58fda13c27a38b8b9310"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a423da2f4a44af6d0b99d8a909cf21045"><td class="memItemLeft" align="right" valign="top">cotask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a423da2f4a44af6d0b99d8a909cf21045">task3</a></td></tr>
+<tr class="separator:a423da2f4a44af6d0b99d8a909cf21045"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac11856f0f317a306004f0d5095ebd95b"><td class="memItemLeft" align="right" valign="top">cotask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#ac11856f0f317a306004f0d5095ebd95b">task4</a></td></tr>
+<tr class="separator:ac11856f0f317a306004f0d5095ebd95b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69eea338e24b338b231232a082184fba"><td class="memItemLeft" align="right" valign="top">cotask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a69eea338e24b338b231232a082184fba">task5</a></td></tr>
+<tr class="separator:a69eea338e24b338b231232a082184fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a129bda823cbb62ffb698427de27e0d56"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a129bda823cbb62ffb698427de27e0d56">try</a> :</td></tr>
 <tr class="separator:a129bda823cbb62ffb698427de27e0d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="ae956baf22be01b82f8f5cc7ffc167d69" name="ae956baf22be01b82f8f5cc7ffc167d69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae956baf22be01b82f8f5cc7ffc167d69">&#9670;&#160;</a></span>q0</h2>
+<a id="affa9d5fb13d17c937dc49005739b71cf" name="affa9d5fb13d17c937dc49005739b71cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affa9d5fb13d17c937dc49005739b71cf">&#9670;&#160;</a></span>aim</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">task_share main.q0</td>
+          <td class="memname">task_share main.aim = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Aim&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"><span class="lineno">    1</span>=  <a class="code hl_class" href="classtask__share_1_1_queue.html">task_share.Queue</a>(<span class="stringliteral">&#39;L&#39;</span>, 16, thread_protect=<span class="keyword">False</span>, overwrite=<span class="keyword">False</span>,</div>
-<div class="line"><span class="lineno">    2</span>                          name=<span class="stringliteral">&quot;Queue 0&quot;</span>)</div>
-<div class="ttc" id="aclasstask__share_1_1_queue_html"><div class="ttname"><a href="classtask__share_1_1_queue.html">task_share.Queue</a></div><div class="ttdoc">A queue which is used to transfer data from one task to another.</div><div class="ttdef"><b>Definition:</b> task_share.py:80</div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
-<a id="a3ebd9bb4d62bde9a647a803917e0e434" name="a3ebd9bb4d62bde9a647a803917e0e434"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ebd9bb4d62bde9a647a803917e0e434">&#9670;&#160;</a></span>share0</h2>
+<a id="aa61f81f46ead5f4d901fd546cbc9bd36" name="aa61f81f46ead5f4d901fd546cbc9bd36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa61f81f46ead5f4d901fd546cbc9bd36">&#9670;&#160;</a></span>cameraon</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">task_share main.share0 = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('h', thread_protect=False, name=&quot;Share 0&quot;)</td>
+          <td class="memname">task_share main.cameraon = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Cameraon&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7c5db6ec68ed3dbd239dc283de433c8d" name="a7c5db6ec68ed3dbd239dc283de433c8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c5db6ec68ed3dbd239dc283de433c8d">&#9670;&#160;</a></span>fire</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">task_share main.fire = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Fire&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc54395e44b56745919ce6dad175982e" name="abc54395e44b56745919ce6dad175982e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc54395e44b56745919ce6dad175982e">&#9670;&#160;</a></span>fired</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">task_share main.fired = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Fired&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8821ea75b115930a21b1103b6b58384b" name="a8821ea75b115930a21b1103b6b58384b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8821ea75b115930a21b1103b6b58384b">&#9670;&#160;</a></span>KI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">task_share main.KI = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('f', thread_protect=False, name=&quot;KI&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae549c882532bb3b3b5b40189745ad059" name="ae549c882532bb3b3b5b40189745ad059"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae549c882532bb3b3b5b40189745ad059">&#9670;&#160;</a></span>KP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">task_share main.KP = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('f', thread_protect=False, name=&quot;KP&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae95e1114640f957aafb8c6101a8a29f9" name="ae95e1114640f957aafb8c6101a8a29f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae95e1114640f957aafb8c6101a8a29f9">&#9670;&#160;</a></span>position</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">task_share main.position = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Position&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afdbc73d09ef3987b6b19e82689d4a600" name="afdbc73d09ef3987b6b19e82689d4a600"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdbc73d09ef3987b6b19e82689d4a600">&#9670;&#160;</a></span>ready</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">task_share main.ready = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Ready&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -151,10 +260,102 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"><span class="lineno">    1</span>=  <a class="code hl_class" href="classcotask_1_1_task.html">cotask.Task</a>(motor1.Motor1, name=<span class="stringliteral">&quot;Motor_1&quot;</span>, priority=1, period=60,</div>
-<div class="line"><span class="lineno">    2</span>                        profile=<span class="keyword">True</span>, trace=<span class="keyword">False</span>, shares=(share0, q0))</div>
+<b>Initial value:</b><div class="fragment"><div class="line"><span class="lineno">    1</span>=  <a class="code hl_class" href="classcotask_1_1_task.html">cotask.Task</a>(motor1.Motor1, name=<span class="stringliteral">&quot;Motor_Yaw&quot;</span>, priority=2, period=40,</div>
+<div class="line"><span class="lineno">    2</span>                        profile=<span class="keyword">True</span>, trace=<span class="keyword">False</span>, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))</div>
 <div class="ttc" id="aclasscotask_1_1_task_html"><div class="ttname"><a href="classcotask_1_1_task.html">cotask.Task</a></div><div class="ttdoc">Implements multitasking with scheduling and some performance logging.</div><div class="ttdef"><b>Definition:</b> cotask.py:36</div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="aaba6cfdb6abf58fda13c27a38b8b9310" name="aaba6cfdb6abf58fda13c27a38b8b9310"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaba6cfdb6abf58fda13c27a38b8b9310">&#9670;&#160;</a></span>task2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cotask main.task2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><span class="lineno">    1</span>=  <a class="code hl_class" href="classcotask_1_1_task.html">cotask.Task</a>(motor2.Motor2, name=<span class="stringliteral">&quot;Motor_Pitch&quot;</span>, priority=2, period=40,</div>
+<div class="line"><span class="lineno">    2</span>                        profile=<span class="keyword">True</span>, trace=<span class="keyword">False</span>, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a423da2f4a44af6d0b99d8a909cf21045" name="a423da2f4a44af6d0b99d8a909cf21045"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a423da2f4a44af6d0b99d8a909cf21045">&#9670;&#160;</a></span>task3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cotask main.task3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><span class="lineno">    1</span>=  <a class="code hl_class" href="classcotask_1_1_task.html">cotask.Task</a>(controlServo.fire, name=<span class="stringliteral">&quot;Motor_Servo&quot;</span>, priority=3, period=100,</div>
+<div class="line"><span class="lineno">    2</span>                        profile=<span class="keyword">True</span>, trace=<span class="keyword">False</span>, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac11856f0f317a306004f0d5095ebd95b" name="ac11856f0f317a306004f0d5095ebd95b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac11856f0f317a306004f0d5095ebd95b">&#9670;&#160;</a></span>task4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cotask main.task4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><span class="lineno">    1</span>=  <a class="code hl_class" href="classcotask_1_1_task.html">cotask.Task</a>(MasterMind.mastermind, name=<span class="stringliteral">&quot;Master_Mind&quot;</span>, priority=1, period=200,</div>
+<div class="line"><span class="lineno">    2</span>                        profile=<span class="keyword">True</span>, trace=<span class="keyword">False</span>, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a69eea338e24b338b231232a082184fba" name="a69eea338e24b338b231232a082184fba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69eea338e24b338b231232a082184fba">&#9670;&#160;</a></span>task5</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cotask main.task5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><span class="lineno">    1</span>=  <a class="code hl_class" href="classcotask_1_1_task.html">cotask.Task</a>(CameraRaw.cameraFN, name=<span class="stringliteral">&quot;Camera&quot;</span>, priority=4, period=500,</div>
+<div class="line"><span class="lineno">    2</span>                        profile=<span class="keyword">True</span>, trace=<span class="keyword">False</span>, shares=(updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa5c82d3f2b5273ab83462dfee57623e9" name="aa5c82d3f2b5273ab83462dfee57623e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5c82d3f2b5273ab83462dfee57623e9">&#9670;&#160;</a></span>theta1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">task_share main.theta1 = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('f', thread_protect=False, name=&quot;thetayaw&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adb7db0b2c532851f0f0a9934371aaa44" name="adb7db0b2c532851f0f0a9934371aaa44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb7db0b2c532851f0f0a9934371aaa44">&#9670;&#160;</a></span>theta2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">task_share main.theta2 = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('f', thread_protect=False, name=&quot;thetapitch&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="a129bda823cbb62ffb698427de27e0d56" name="a129bda823cbb62ffb698427de27e0d56"></a>
@@ -165,6 +366,34 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">main.try :</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1825ef01b63f328d5c5edf28e4b81fb" name="ae1825ef01b63f328d5c5edf28e4b81fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1825ef01b63f328d5c5edf28e4b81fb">&#9670;&#160;</a></span>updateang</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">task_share main.updateang = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;updateang&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abe3bbfd8d9fbf885ff8470fcf720b47d" name="abe3bbfd8d9fbf885ff8470fcf720b47d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe3bbfd8d9fbf885ff8470fcf720b47d">&#9670;&#160;</a></span>updatemotor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">task_share main.updatemotor = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Update_Motor&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

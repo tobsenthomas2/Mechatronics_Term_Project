@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['name_0',['name',['../classcotask_1_1_task.html#ab54e069dd0b4f0a2f8e7f00c94998a10',1,'cotask::Task']]],
-  ['num_5fin_1',['num_in',['../classtask__share_1_1_queue.html#a713321bacac5d93ecf89c4be1c15fe30',1,'task_share::Queue']]]
+  ['last_5fread_0',['last_read',['../classmlx90640_1_1_m_l_x90640.html#a96abdce2c83f1eaa1c937c6e135e2fb1',1,'mlx90640::MLX90640']]],
+  ['last_5fsubpage_1',['last_subpage',['../classmlx90640_1_1_m_l_x90640.html#adc0a164171ff859391278323419dc761',1,'mlx90640::MLX90640']]],
+  ['layout_2',['layout',['../classmlx90640_1_1utils_1_1_struct_proto.html#a51dfdded63ed480f66b3f5f36bb4e7d6',1,'mlx90640::utils::StructProto']]],
+  ['length_5ftot_3',['length_tot',['../namespacetestpitchyawtables.html#a8eec7ac4aa1616682650186e63270aee',1,'testpitchyawtables']]]
 ];

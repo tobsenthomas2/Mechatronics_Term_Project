@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Lab 3: G:/Meine Ablage/Uni/Auslandssemester/00_Class/secondQuater/Mechatrinics/lab3/src/main.py File Reference</title>
+<title>Term_Project: G:/Meine Ablage/Uni/Auslandssemester/00_Class/secondQuater/Mechatrinics/FINAL_TermProject/Mechatronics_Term_Project/src/main.py File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="MELogo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Lab 3<span id="projectnumber">&#160;V.1</span>
+   <div id="projectname">Term_Project<span id="projectnumber">&#160;V.1</span>
    </div>
-   <div id="projectbrief">Controlling twoe different motors, sending data back and forth and plotting graphs for different periods - Sydney Gothenquist, Toby Moss Darci-Maher, Tobias Thomas</div>
+   <div id="projectbrief">Automated target recognition and control and aiming mechanisml of a nerf gun - Sydney Gothenquist, Toby Moss Darci-Maher, Tobias Thomas</div>
   </td>
  </tr>
  </tbody>
@@ -105,12 +105,40 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a3ebd9bb4d62bde9a647a803917e0e434"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a3ebd9bb4d62bde9a647a803917e0e434">main.share0</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('h', thread_protect=False, name=&quot;Share 0&quot;)</td></tr>
-<tr class="separator:a3ebd9bb4d62bde9a647a803917e0e434"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae956baf22be01b82f8f5cc7ffc167d69"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#ae956baf22be01b82f8f5cc7ffc167d69">main.q0</a></td></tr>
-<tr class="separator:ae956baf22be01b82f8f5cc7ffc167d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe3bbfd8d9fbf885ff8470fcf720b47d"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#abe3bbfd8d9fbf885ff8470fcf720b47d">main.updatemotor</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Update_Motor&quot;)</td></tr>
+<tr class="separator:abe3bbfd8d9fbf885ff8470fcf720b47d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdbc73d09ef3987b6b19e82689d4a600"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#afdbc73d09ef3987b6b19e82689d4a600">main.ready</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Ready&quot;)</td></tr>
+<tr class="separator:afdbc73d09ef3987b6b19e82689d4a600"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc54395e44b56745919ce6dad175982e"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#abc54395e44b56745919ce6dad175982e">main.fired</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Fired&quot;)</td></tr>
+<tr class="separator:abc54395e44b56745919ce6dad175982e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affa9d5fb13d17c937dc49005739b71cf"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#affa9d5fb13d17c937dc49005739b71cf">main.aim</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Aim&quot;)</td></tr>
+<tr class="separator:affa9d5fb13d17c937dc49005739b71cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c5db6ec68ed3dbd239dc283de433c8d"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a7c5db6ec68ed3dbd239dc283de433c8d">main.fire</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Fire&quot;)</td></tr>
+<tr class="separator:a7c5db6ec68ed3dbd239dc283de433c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5c82d3f2b5273ab83462dfee57623e9"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#aa5c82d3f2b5273ab83462dfee57623e9">main.theta1</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('f', thread_protect=False, name=&quot;thetayaw&quot;)</td></tr>
+<tr class="separator:aa5c82d3f2b5273ab83462dfee57623e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb7db0b2c532851f0f0a9934371aaa44"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#adb7db0b2c532851f0f0a9934371aaa44">main.theta2</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('f', thread_protect=False, name=&quot;thetapitch&quot;)</td></tr>
+<tr class="separator:adb7db0b2c532851f0f0a9934371aaa44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa61f81f46ead5f4d901fd546cbc9bd36"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#aa61f81f46ead5f4d901fd546cbc9bd36">main.cameraon</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Cameraon&quot;)</td></tr>
+<tr class="separator:aa61f81f46ead5f4d901fd546cbc9bd36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1825ef01b63f328d5c5edf28e4b81fb"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#ae1825ef01b63f328d5c5edf28e4b81fb">main.updateang</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;updateang&quot;)</td></tr>
+<tr class="separator:ae1825ef01b63f328d5c5edf28e4b81fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae95e1114640f957aafb8c6101a8a29f9"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#ae95e1114640f957aafb8c6101a8a29f9">main.position</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('B', thread_protect=False, name=&quot;Position&quot;)</td></tr>
+<tr class="separator:ae95e1114640f957aafb8c6101a8a29f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae549c882532bb3b3b5b40189745ad059"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#ae549c882532bb3b3b5b40189745ad059">main.KP</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('f', thread_protect=False, name=&quot;KP&quot;)</td></tr>
+<tr class="separator:ae549c882532bb3b3b5b40189745ad059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8821ea75b115930a21b1103b6b58384b"><td class="memItemLeft" align="right" valign="top">task_share&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a8821ea75b115930a21b1103b6b58384b">main.KI</a> = <a class="el" href="classtask__share_1_1_share.html">task_share.Share</a>('f', thread_protect=False, name=&quot;KI&quot;)</td></tr>
+<tr class="separator:a8821ea75b115930a21b1103b6b58384b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1550fe10203477b8031a6d4b94e50944"><td class="memItemLeft" align="right" valign="top">cotask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a1550fe10203477b8031a6d4b94e50944">main.task1</a></td></tr>
 <tr class="separator:a1550fe10203477b8031a6d4b94e50944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaba6cfdb6abf58fda13c27a38b8b9310"><td class="memItemLeft" align="right" valign="top">cotask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#aaba6cfdb6abf58fda13c27a38b8b9310">main.task2</a></td></tr>
+<tr class="separator:aaba6cfdb6abf58fda13c27a38b8b9310"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a423da2f4a44af6d0b99d8a909cf21045"><td class="memItemLeft" align="right" valign="top">cotask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a423da2f4a44af6d0b99d8a909cf21045">main.task3</a></td></tr>
+<tr class="separator:a423da2f4a44af6d0b99d8a909cf21045"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac11856f0f317a306004f0d5095ebd95b"><td class="memItemLeft" align="right" valign="top">cotask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#ac11856f0f317a306004f0d5095ebd95b">main.task4</a></td></tr>
+<tr class="separator:ac11856f0f317a306004f0d5095ebd95b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69eea338e24b338b231232a082184fba"><td class="memItemLeft" align="right" valign="top">cotask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a69eea338e24b338b231232a082184fba">main.task5</a></td></tr>
+<tr class="separator:a69eea338e24b338b231232a082184fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a129bda823cbb62ffb698427de27e0d56"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a129bda823cbb62ffb698427de27e0d56">main.try</a> :</td></tr>
 <tr class="separator:a129bda823cbb62ffb698427de27e0d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -119,7 +147,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_934f46a345653ef2b3014a1b37a162c1.html">G:</a></li><li class="navelem"><a class="el" href="dir_8bffa89b9f4de304d028453fa54ee510.html">Meine Ablage</a></li><li class="navelem"><a class="el" href="dir_769e9ae6b453003137ac8b41cf32444a.html">Uni</a></li><li class="navelem"><a class="el" href="dir_322f186b2db794c35a6bf013dc1ee7f2.html">Auslandssemester</a></li><li class="navelem"><a class="el" href="dir_a7dda7f88b5310348c9d6b578a2aacb7.html">00_Class</a></li><li class="navelem"><a class="el" href="dir_77a5ea99f5ea358cc33384b87fea235e.html">secondQuater</a></li><li class="navelem"><a class="el" href="dir_eba5b1f6964b3ca83a0344d06a5e9b30.html">Mechatrinics</a></li><li class="navelem"><a class="el" href="dir_745c048dc9c79a152c638f7b2290cd4c.html">lab3</a></li><li class="navelem"><a class="el" href="dir_86154b82e193baac450e3bd790325259.html">src</a></li><li class="navelem"><a class="el" href="main_8py.html">main.py</a></li>
+    <li class="navelem"><a class="el" href="dir_934f46a345653ef2b3014a1b37a162c1.html">G:</a></li><li class="navelem"><a class="el" href="dir_8bffa89b9f4de304d028453fa54ee510.html">Meine Ablage</a></li><li class="navelem"><a class="el" href="dir_769e9ae6b453003137ac8b41cf32444a.html">Uni</a></li><li class="navelem"><a class="el" href="dir_322f186b2db794c35a6bf013dc1ee7f2.html">Auslandssemester</a></li><li class="navelem"><a class="el" href="dir_a7dda7f88b5310348c9d6b578a2aacb7.html">00_Class</a></li><li class="navelem"><a class="el" href="dir_77a5ea99f5ea358cc33384b87fea235e.html">secondQuater</a></li><li class="navelem"><a class="el" href="dir_eba5b1f6964b3ca83a0344d06a5e9b30.html">Mechatrinics</a></li><li class="navelem"><a class="el" href="dir_11d4da134cdd61ec726223a3fd172893.html">FINAL_TermProject</a></li><li class="navelem"><a class="el" href="dir_57dc813b4bef375b17c8c4d0aa749055.html">Mechatronics_Term_Project</a></li><li class="navelem"><a class="el" href="dir_5d7cc0ba0888ef66ce5a6e2759d6fbd9.html">src</a></li><li class="navelem"><a class="el" href="main_8py.html">main.py</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

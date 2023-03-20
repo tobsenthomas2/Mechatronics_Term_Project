@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['empty_0',['empty',['../classtask__share_1_1_queue.html#af9ada059fc09a44adc9084901e2f7266',1,'task_share::Queue']]]
+  ['detect_5fcamera_0',['detect_camera',['../namespacemlx90640.html#a3a4fb7956a6827db269248c279768e17',1,'mlx90640']]]
 ];

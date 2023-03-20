@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['num_5fin_0',['num_in',['../classtask__share_1_1_queue.html#a713321bacac5d93ecf89c4be1c15fe30',1,'task_share::Queue']]]
+  ['has_5fdata_0',['has_data',['../classmlx90640_1_1_m_l_x90640.html#a6763b37daa013c08113ac51f9c9b2920',1,'mlx90640::MLX90640']]]
 ];

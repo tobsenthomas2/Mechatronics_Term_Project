@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['encoderclass_0',['EncoderClass',['../classencoder__reader_1_1_encoder_class.html',1,'encoder_reader']]]
+  ['baseshare_0',['BaseShare',['../classtask__share_1_1_base_share.html',1,'task_share']]]
 ];

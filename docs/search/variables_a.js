@@ -1,12 +1,20 @@
 var searchData=
 [
-  ['period_0',['period',['../classcotask_1_1_task.html#a44f980f61f1908764c6821fa886590ca',1,'cotask::Task']]],
-  ['plotcounter_1',['plotCounter',['../namespaceread_and_plot_on_p_c.html#a8a92529c773324691774db56249b7014',1,'readAndPlotOnPC']]],
-  ['plotnr_2',['plotNr',['../namespaceread_and_plot_on_p_c.html#a1abd2e38d558b8cc8d5d11fb4e1ee294',1,'readAndPlotOnPC']]],
-  ['position_3',['position',['../class_p_w_m___calc_1_1_p_w_m___calc.html#a412fbefb740d8876944b5c5fbd4e0f78',1,'PWM_Calc::PWM_Calc']]],
-  ['prevcount_4',['prevCount',['../classencoder__reader_1_1_encoder_class.html#a77edb64e3e3cecd752fe7426676e738c',1,'encoder_reader::EncoderClass']]],
-  ['pri_5flist_5',['pri_list',['../classcotask_1_1_task_list.html#aac6e53cb4fec80455198ff85c85a4b51',1,'cotask::TaskList']]],
-  ['priority_6',['priority',['../classcotask_1_1_task.html#aeced93c7b7d23e33de9693d278aef88b',1,'cotask::Task']]],
-  ['pwm_7',['pwm',['../class_p_w_m___calc_1_1_p_w_m___calc.html#a8de4a39a6394da9f4ceea954cf007423',1,'PWM_Calc::PWM_Calc']]],
-  ['pwmtim_8',['pwmTim',['../classmotor__driver_1_1_motor_driver.html#ac0cf89f255d3411e7867bf216874f281',1,'motor_driver::MotorDriver']]]
+  ['k_5fvdd_0',['k_vdd',['../classmlx90640_1_1calibration_1_1_camera_calibration.html#aae071e1456eb91fa98d2fbeb9b114478',1,'mlx90640::calibration::CameraCalibration']]],
+  ['kd_5fset_1',['KD_set',['../class_p_w_m___calc_1_1_p_w_m___calc.html#a03015c566456b53cb6e538e1ca338cf2',1,'PWM_Calc::PWM_Calc']]],
+  ['ki_2',['KI',['../namespacemain.html#a8821ea75b115930a21b1103b6b58384b',1,'main']]],
+  ['ki_5fset_3',['KI_set',['../class_p_w_m___calc_1_1_p_w_m___calc.html#a9f88fad36206b785cbd510a38c4671d1',1,'PWM_Calc::PWM_Calc']]],
+  ['kp_4',['KP',['../namespacemain.html#ae549c882532bb3b3b5b40189745ad059',1,'main']]],
+  ['kp_5fset_5',['KP_set',['../class_p_w_m___calc_1_1_p_w_m___calc.html#a42b774f30b28ba5572104bb9b686c3de',1,'PWM_Calc::PWM_Calc']]],
+  ['ksta_6',['ksta',['../classmlx90640_1_1calibration_1_1_camera_calibration.html#ac37ea1a022bf74f53cae378f5388bcb7',1,'mlx90640::calibration::CameraCalibration']]],
+  ['ksto_7',['ksto',['../classmlx90640_1_1calibration_1_1_camera_calibration.html#a9ab7beed93f6bf7b0ae21ab5167ac458',1,'mlx90640::calibration::CameraCalibration']]],
+  ['ksto_5fscale_8',['ksto_scale',['../classmlx90640_1_1calibration_1_1_camera_calibration.html#a8a2e18e360b40ee3a6084c5f97536890',1,'mlx90640::calibration::CameraCalibration']]],
+  ['kt_5fptat_9',['kt_ptat',['../classmlx90640_1_1calibration_1_1_camera_calibration.html#ad25fb3537b77bc9ca81e0bab894f3036',1,'mlx90640::calibration::CameraCalibration']]],
+  ['kta_5fcp_10',['kta_cp',['../classmlx90640_1_1calibration_1_1_camera_calibration.html#a79a6bd0953706dc4823b3e6d47de0356',1,'mlx90640::calibration::CameraCalibration']]],
+  ['kta_5fscale_5f1_11',['kta_scale_1',['../classmlx90640_1_1calibration_1_1_camera_calibration.html#a325689231a25ab92bb2381c06667c61d',1,'mlx90640::calibration::CameraCalibration']]],
+  ['kta_5fscale_5f2_12',['kta_scale_2',['../classmlx90640_1_1calibration_1_1_camera_calibration.html#aa4b8f4d26cac3b3478f215ef11c46e87',1,'mlx90640::calibration::CameraCalibration']]],
+  ['kv_5favg_13',['kv_avg',['../classmlx90640_1_1calibration_1_1_camera_calibration.html#adf129db64c0b8463fbd7abc34ea610d1',1,'mlx90640::calibration::CameraCalibration']]],
+  ['kv_5fcp_14',['kv_cp',['../classmlx90640_1_1calibration_1_1_camera_calibration.html#adb6b854c8a037c2b0bd11c905a9c7744',1,'mlx90640::calibration::CameraCalibration']]],
+  ['kv_5fptat_15',['kv_ptat',['../classmlx90640_1_1calibration_1_1_camera_calibration.html#a309c8e64ae78f64e4336696bc175af6b',1,'mlx90640::calibration::CameraCalibration']]],
+  ['kv_5fscale_16',['kv_scale',['../classmlx90640_1_1calibration_1_1_camera_calibration.html#afa68d176e46764c725a680f196c11a54',1,'mlx90640::calibration::CameraCalibration']]]
 ];
