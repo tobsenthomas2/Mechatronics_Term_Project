@@ -18,7 +18,7 @@ We created a task function and utilized a scheduler that would trigger different
 
 Launcher Overall:
 
-![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/IMG_2658.heic)
+![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/IMG_2658.png)
 
 
 # Testing:
