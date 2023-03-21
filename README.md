@@ -27,6 +27,14 @@ We plotted our response intitally with a generalized PID controller that simulat
 
 We tried differing values for the KP and KI gain values, however when we increased KI too large, we found that we overshot too much, and similarly with the KP value.
 
+We tried that with differnt values and made tables, so we could compare them. Following you can find one example tabele:
+KP= 0.03
+KI= 0.005
+
+| Attempt | #1    | #2    | #1    | #2    | #1    |
+| :-----: | :---: | :---: | :-----: | :---: | :---: |
+| Hit | 1   | 0   | 1    | 0    | 0    | 
+
 Failed Test Trial:
 
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/BadTest.MOV)
