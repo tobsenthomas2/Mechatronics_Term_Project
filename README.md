@@ -18,7 +18,7 @@ We created a task function and utilized a scheduler that would trigger different
 
 Launcher Overall:
 
-![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/IMG_2658.heic)
+![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/IMG_2658.png)
 
 
 # Testing:
@@ -27,17 +27,33 @@ We plotted our response intitally with a generalized PID controller that simulat
 
 We tried differing values for the KP and KI gain values, however when we increased KI too large, we found that we overshot too much, and similarly with the KP value.
 
+We tried with differnt values and made tables, so we could compare them, also we took the time. Following you can find one example tabele:
+KP= 0.03
+KI= 0.005
+
+| Attempt | #1    | #2    | #1    | #2    | #1    |
+| :-----: | :---: | :---: | :-----: | :---: | :---: |
+| Hit | 1   | 0   | 1    | 0    | 0    | 
+| Time to shoot | 1.2   | 6   | 1.01    | 3.76    | 2.01    | 
+
+We created a matrix with all the values we wanted to compare and choose the best value for our use case. 
+After we did that we saw, that only 5 attemts are too less and its not accurate enought, but we also had the feeling that the gun itself shoots random. So in the next itaration we would think more about that.
+
+
 Failed Test Trial:
 
-![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/BadTest.MOV)
+
+[![Watch the video](https://img.youtube.com/vi/YJh235cYVxw/0.jpg)](https://youtube.com/shorts/YJh235cYVxw?feature=share)
 
 Launcher Testing:
 
-![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/IMG_2624.MOV)
+[![Watch the video](https://img.youtube.com/vi/fPlxaU3ffSM/0.jpg)](https://youtube.com/shorts/fPlxaU3ffSM?feature=share)
+
 
 Launcher Testing:
 
-![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/IMG_2658.mov)
+[![Watch the video](https://img.youtube.com/vi/-sAixdGBE94/0.jpg)](https://youtube.com/shorts/-sAixdGBE94?feature=share)
+
 
 # Software Overview:
 
