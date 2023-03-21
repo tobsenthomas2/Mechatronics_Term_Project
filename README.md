@@ -1,13 +1,7 @@
 # Term Project
 
 ME-405-03-2232 term project
-
---> WHAT WE NEED: An introduction to your project. What is the purpose of the device you have created? For whose use is it intended?
-An overview of the hardware design.  We need to know about the hardware on which the software in your repository will operate.
-An overview of the software design. This should be brief and general, with a link to your Doxygen pages -- the pages describe the details of the software, so there's no need to repeat that here.
-A discussion of the results. How did you test your system?  How well has your system performed in these tests?
-A brief discussion of what you've learned about the project and recommendations for anyone who would like to build upon your work. This does not mean a discussion of what you learned about mechatronics in general; that belongs in other places. It is a discussion of what worked well and what didn't for this device.
-Links to additional files as appropriate.  For example, if you have a directory containing CAD drawings, you might provide a link here.
+Sydney Gothenquist, Toby Darci, Toby Thomas
 
 
 # Instruction/Overview:
@@ -23,11 +17,15 @@ Launcher Overall:
 
 # Testing:
 
-We plotted our response intitally with a generalized PID controller that simulated the dynamics of our system. After we built the launcher, we plotted the data from the response. Our overshoot and discontinuity was minimized using a KI value of 0.005 and KP value of 0.025 and the best period we had was 20 ms.
+We plotted our response intitally with a generalized PID controller that simulated the dynamics of our system. For both axes, we had Kp = 30, Kd = 0.8, and Ki = 0.4. This shows the general response using an RK4 solver:
+
+![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/CLxyPID3084.png)
+
+After we built the launcher, we plotted the data from the response. Our overshoot and discontinuity was minimized using a KI value of 0.005 and KP value of 0.025 and the best period we had was 20 ms.
 
 We tried differing values for the KP and KI gain values, however when we increased KI too large, we found that we overshot too much, and similarly with the KP value.
 
-We tried with differnt values and made tables, so we could compare them, also we took the time. Following you can find one example tabele:
+We tried with different values and made tables, so we could compare them, also we took the time. Following you can find one example tabele:
 KP= 0.03
 KI= 0.005
 
