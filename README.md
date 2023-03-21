@@ -36,6 +36,10 @@ KI= 0.005
 | Hit | 1   | 0   | 1    | 0    | 0    | 
 | Time to shoot | 1.2   | 6   | 1.01    | 3.76    | 2.01    | 
 
+We created a matrix with all the values we wanted to compare and choose the best value for our use case. 
+After we did that we saw, that only 5 attemts are too less and its not accurate enought, but we also had the feeling that the gun itself shoots random. So in the next itaration we would think more about that.
+
+
 Failed Test Trial:
 
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/BadTest.MOV)
