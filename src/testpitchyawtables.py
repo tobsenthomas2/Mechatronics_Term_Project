@@ -1,3 +1,11 @@
+"""!
+@file testpitchyawtables.py
+    This file contains a testing table that checks different values and positional
+    data. This allows for us to check different inputs and outputs to fine tune the laucher. 
+
+@author Toby Darci, Tobias Thomas, Sydney Gothenquist
+@date   2023-Mar-11 
+    """
 import math
 width_tot = 96
 length_tot = 200

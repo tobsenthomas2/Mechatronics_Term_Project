@@ -1,6 +1,16 @@
+"""!
+@file PWM_Calc.py
+    This file allows for us to set the PWM inputs to the motor. This runs our
+    PI controller based on our set KI and KP gain values.
+
+@author Toby Darci, Tobias Thomas, Sydney Gothenquist
+@date   2023-Mar-11 
+"""
+
 import pyb
 import time
 import utime
+
 #import serial
 """!Supply as an input the setpoint, the desired location of the motor.
 

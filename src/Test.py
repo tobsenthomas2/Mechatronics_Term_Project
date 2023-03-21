@@ -1,3 +1,12 @@
+"""!
+@file test.py
+    File used to test various timesteps, KP/KI gain values, and other user
+    set inputs for the functionality of the "launcher"
+
+@author Toby Darci, Tobias Thomas, Sydney Gothenquist
+@date   2023-Mar-11 
+    """
+
 from PWM_Calc import PWM_Calc
 import pyb, time
 from encoder_reader import EncoderClass
