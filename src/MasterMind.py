@@ -23,6 +23,9 @@ for i in range(len(pitch)):
 #value is the number set by the camera from the 8x8 "x" matrix
 buttonpin = pyb.Pin(pyb.Pin.board.PC13,pyb.Pin.IN,)
 def angle(pos):
+    """! 
+    @brief Function that takes in the position from the camera task and outputs the angle of each motor based on the pitch and yaw tables.
+    """
     posoct = oct(pos+int('10',8))[2:]
     position = [int(i) for i in posoct]
     yawindex = position[1]-1
@@ -34,6 +37,11 @@ def angle(pos):
     return(yawang, pitchang)
 
 def mastermind(shares):
+    """! 
+    @brief Task generator function for the main operation of the code. Mastermind tells each of the states to do what is needed at various parts of the operation.
+    
+    @return The state of Mastermind
+    """
     updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI = shares
     state = 0
     state1 = 0
