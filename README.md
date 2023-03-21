@@ -12,9 +12,9 @@ Links to additional files as appropriate.  For example, if you have a directory 
 
 # Instruction/Overview:
 
-The goal of this project is to conduct a duel. This duel will be conducted with a "launcher" or a nerf gun that we have added attachments to to fit our specific needs. The duel is conducted by shooting an opponent opposite to the launcher, with points awarded for a hit and subtracted for a miss. Upon running the code, the launcher will be turned on, and rotate 180 degrees to start. From there, it will take data from a thermal camera. Based on where the thermal camera picks up the highest heat concentration, the program will run to move the launcher to the position of this heat concentration which is represented as an "X" in an 8x8 grid of the entire output of the thermal camera. Based on the dimensions of the table that we are "dueling" on, we calculated the 8 pitch positions and 8 yaw positions that the launcher may need to move to based on where the opponent is standing which are stored as radians in two lists. We added two pulley systems with two DC motors to control the pitch and yaw of the launcher. This is what we are using to control the positioning and to move the launcher to the position that was output by the thermal camera. 
+The goal of this project is to conduct a duel. This duel will be conducted with a "launcher" or a nerf gun that we have added attachments to to fit our specific needs. The duel is conducted by shooting an opponent opposite to the launcher, with points awarded for a hit and subtracted for a miss. Upon running the code, the launcher will be turned on, and rotate 180 degrees to start. From there, it will take data from a thermal camera. Based on where the thermal camera picks up the highest heat concentration based on 64 chucks which represent the average value of a selection of pixels, the program will run to move the launcher to the position of this heat concentration which is represented as an "X" in an 8x8 grid of the entire output of the thermal camera. Based on the dimensions of the table that we are "dueling" on, we calculated the 8 pitch positions and 8 yaw positions that the launcher may need to move to based on where the opponent is standing which are stored as radians in two lists. We added two pulley systems with two DC motors to control the pitch and yaw of the launcher. This is what we are using to control the positioning and to move the launcher to the position that was output by the thermal camera. 
 
-We created a task function and utilized a scheduler that would trigger different tasks to run at varied set intervals. We adjusted these intervals to find the optimal interval that would give us a clean response and take up the least amount of processing time. For example, our motors run at 20ms with the yaw motor (motor 1) having task priority 1 and the pitch motor (motor 2) having priority 2. Mastermind, the main hub for our motor launching capabilities has a priority of 1 and period of 200ms. The camera functions have a priority of 4 with a period of 500ms. Using our thermal camera data, we adjusted the KP and KI values to get us within a range that is close enough to hit the target with our launcher. 
+We created a task function and utilized a scheduler that would trigger different tasks to run at varied set intervals. We adjusted these intervals to find the optimal interval that would give us a clean response and take up the least amount of processing time. For example, our motors run every 20ms with the yaw motor (motor 1) having task priority 1 and the pitch motor (motor 2) having priority 2. Mastermind, the main controller task, has a priority of 1 and period of 200ms. The camera functions have a priority of 4 with a period of 500ms. Using our thermal camera data, we adjusted the KP and KI values to get us within a range that is close enough to hit the target with our launcher. 
 
 Launcher Overall:
 
@@ -57,13 +57,13 @@ Launcher Testing:
 
 # Software Overview:
 
-We utilized cotask and task share in our code. Cotask is a multitasking real-time software from cotask.py. For communication between our tasks, we used interrupt service routines and cooperatively scheduled "regular" tasks as found in task_share.py. We also used the "time" library for timing functionality and referenced GPIO pins as well as PWM. We used i2c to send and recieve data between different components. 
+We utilized cotask and task share in our code. Cotask is a multitasking software from cotask.py with triggers specified tasks at regular intervals based on a specified period. Tasks have varying priority ranks, determining which task runs when both tasks attempt to run simultaneously. For communication between our tasks, we create different share objects for each variable or list needed to be referenced across tasks. For this we used the task share library which allows us to put a value to a shared variable and get a value from a shared variable across all tasks using the .put and .get functions. We also used the time library for timing functionality and referenced GPIO pins as well as PWM from the pyb library. We used i2c to recieve data from the thermal camera. 
 
 # Hardware Overview:
 
-We ran our MicroPython on the Nucleo-64 boards from ST Microelectronics with a simple custom board called the Shoe of Brian which sits below the Nucleo and houses a USB OTG connector. The specific board is a Nucleo-L476RG board.
+We ran our MicroPython on the Nucleo-64 boards from ST Microelectronics with a simple custom board called "the Shoe of Brian" which sits below the Nucleo and houses a USB OTG connector. The specific board is a Nucleo-L476RG board.
 
-We used two AMETEK/PITTMAN PG6712A077-R3 6665 motors, one SMRAZA SG90 micro servo motor, and one MLX9040 thermal camera. We ran these on the nucleo at 12 VDC with 0.5 A.
+We used two AMETEK/PITTMAN PG6712A077-R3 6665 motors, one SMRAZA SG90 micro servo motor, and one MLX9040 thermal camera. We ran these on the nucleo at 24 VDC with a 0.5 A limit.
 
 Motor Drawing:
 
@@ -82,15 +82,15 @@ Micro Servo Motor:
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/MicroServo.png)
 
 
-Our design utilizes two pulley systems to steer our launcher, with a servo motor that triggers the launcher itself. The design implements laser cut and 3d printed pieces, along with one purchased piece from HomeDepot. 
+Our design utilizes two belt - pulley systems to steer our launcher, with a servo motor that triggers the launcher itself. The design implements laser cut and 3d printed pieces, along with a bearing and fasteners from Home Depot.
 
-The piece from HomeDepot consists of essentially ball bearings between two plates that allows for rotation. We can spin this piece to change the yaw of the launcher.
+The bearing from Home Depot consists of essentially ball bearings between two plates that allows for rotation. We can spin this piece to change the yaw of the launcher.
 
 A picture is shown here:
 
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/HomeDepotLazySusan.png)
 
-The lasercut pieces are made from 0.25 inch plywood. These are the base plates that the NERF gun sits on, as well as the main base plate, and the other base plates.
+The lasercut pieces are made from 0.25 inch plywood. These are all of the pieces that could be created flat, as laser cutting is an extremely fast and accurate method of manufacturing but can only cut flat sheets.
 
 The individual CAD files are shown here:
 
@@ -153,9 +153,9 @@ The overall assembly is shown here:
 
 # How to use the programs:
 
-To use this motor controller for our two motors, first set up the thermal camera to face the area that you want to target. Place the launcher 180 degrees away from the target. Now, plug in the micro controller and run the main function. 
+To use this motor controller for our two motors, first set up the thermal camera to face the area that you want to target. If you are setting it up exactly how we did for this project, the angles should be calibrated, if not do the following: Input the width that the camera can see at the distance it is shooting, the height of the gun relative to the bottom of the camera frame, and the height of the image into the testpitchandyawtables.py file. Run this program on your PC and copy and paste the output lists from this program into the yaw and pitch tables in MasterMind.
 
-To plot the response, run the readAndPlotOnPC.py program, with your computer attached to the ST-LINK on the microcontroller. Ensure that the port is set to the correct USB terminal on your computer. This is in addition to the cable you have set up to run micropython on the microcontroller. Now run the main program and wait for the motion to stop. The plot should appear in the window of your read and plot program. 
+Rotate the launcher so it is 180 degrees away from the target. Now, plug in the micro controller and run the main function. 
 
 # Conclusion:
 
