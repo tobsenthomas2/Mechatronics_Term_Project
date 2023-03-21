@@ -46,7 +46,9 @@ Launcher Testing:
 
 Launcher Testing:
 
-![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/IMG_2658.mov)
+[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtube.com/shorts/-sAixdGBE94?feature=share)
+
+![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/IMG_2658.mov) 
 
 # Software Overview:
 
