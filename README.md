@@ -42,8 +42,9 @@ After we did that we saw, that only 5 attemts are too less and its not accurate 
 
 Failed Test Trial:
 
-![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/BadTest.MOV)
+![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/BadTest.MOV) https://youtube.com/shorts/YJh235cYVxw?feature=share
 
+[![Watch the video](https://img.youtube.com/vi/YJh235cYVxw/0.jpg)](https://youtube.com/shorts/YJh235cYVxw?feature=share)
 Launcher Testing:
 
 ![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/IMG_2624.MOV)
@@ -52,7 +53,6 @@ Launcher Testing:
 
 [![Watch the video](https://img.youtube.com/vi/-sAixdGBE94/0.jpg)](https://youtube.com/shorts/-sAixdGBE94?feature=share)
 
-![alt text](https://github.com/tobsenthomas2/Mechatronics_Term_Project/blob/main/IMG_2658.mov) 
 
 # Software Overview:
 
