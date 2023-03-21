@@ -65,11 +65,11 @@ class ServoMotorDriver:
         to the motor to the given level to specify the motor speed.
         Positive values cause torque in one direction, negative values
         in the opposite direction.
-        @@param level: a signed integer representing the duty cycle of the
+        
+        @param level: a signed integer representing the duty cycle of the
         voltage sent to the motor. Positive values cause the motor to turn
         in one direction, negative values cause the motor to turn in
-        """
-        """! For a negative input, we can run CH 1 so it spins one way
+        For a negative input, we can run CH 1 so it spins one way
         and for a positive input we can run CH 2 so it spins the 
         opposite direction for multidirectional capabilities
         """

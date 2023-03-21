@@ -1,3 +1,12 @@
+"""!
+@file motor1.py
+    This file contains firing states for the motor, and reads/sets positional
+    information for motor 1. It allows us to read what state the motor is in
+    so we know whether or not it is ready to fire, and what flags to set accordingly.
+
+@author Toby Darci, Tobias Thomas, Sydney Gothenquist
+@date   2023-Mar-11 
+    """
 #Motor 1 initialization set up
 from PWM_Calc import PWM_Calc
 import pyb, time
@@ -6,14 +15,15 @@ from  motor_driver import MotorDriver
 import math
 
 encticperrad = 16000/(2*math.pi)
-"""!The function initializes and runs the motor 1
-@param[in] reset - boolean value indicating if the motor should be reset or not
-This sets four states, 0, 1, 2, and 3. State 0 initializes the motor 1 and encoder ports.
-It also hardcodes in the KP and position. State 1 runs the encoder and PWM based on the KP and
-positional inputs. This will run for 400ms. State 2 turns off the motor and begins to print data. State 3
-is used when data is done being transmitted. 
-"""
+
 def Motor1(shares):
+    """!The function initializes and runs the motor 1
+    @param[in] shares - allows us to access the shares functionality in cotask.py
+    This sets four states, 0, 1, 2, and 3. State 0 initializes the motor 1 and encoder ports.
+    It also hardcodes in the KP and position. State 1 runs the encoder and PWM based on the KP and
+    positional inputs. This will run for 400ms. State 2 turns off the motor and begins to print data. State 3
+    is used when data is done being transmitted. 
+    """
     updatemotor, ready, fired, fire, theta1, theta2, cameraon, updateang, position, aim, KP, KI = shares
     state = 0
     state1 = 0
